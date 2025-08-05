@@ -235,7 +235,7 @@ React keys must be passed directly to JSX without using spread:
     function g(c) {
       typeof c == "object" && c !== null && c.$$typeof === m && c._store && (c._store.validated = 1);
     }
-    var h = A, m = Symbol.for("react.transitional.element"), C = Symbol.for("react.portal"), T = Symbol.for("react.fragment"), p = Symbol.for("react.strict_mode"), S = Symbol.for("react.profiler"), y = Symbol.for("react.consumer"), P = Symbol.for("react.context"), I = Symbol.for("react.forward_ref"), U = Symbol.for("react.suspense"), v = Symbol.for("react.suspense_list"), O = Symbol.for("react.memo"), x = Symbol.for("react.lazy"), E = Symbol.for("react.activity"), F = Symbol.for("react.client.reference"), K = h.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, Z = Object.prototype.hasOwnProperty, le = Array.isArray, Y = console.createTask ? console.createTask : function() {
+    var h = A, m = Symbol.for("react.transitional.element"), C = Symbol.for("react.portal"), T = Symbol.for("react.fragment"), p = Symbol.for("react.strict_mode"), S = Symbol.for("react.profiler"), y = Symbol.for("react.consumer"), P = Symbol.for("react.context"), I = Symbol.for("react.forward_ref"), U = Symbol.for("react.suspense"), v = Symbol.for("react.suspense_list"), O = Symbol.for("react.memo"), x = Symbol.for("react.lazy"), E = Symbol.for("react.activity"), F = Symbol.for("react.client.reference"), K = h.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, Z = Object.prototype.hasOwnProperty, le = Array.isArray, V = console.createTask ? console.createTask : function() {
       return null;
     };
     h = {
@@ -246,7 +246,7 @@ React keys must be passed directly to JSX without using spread:
     var ee, te = {}, se = h.react_stack_bottom_frame.bind(
       h,
       o
-    )(), B = Y(r(o)), re = {};
+    )(), Y = V(r(o)), re = {};
     X.Fragment = T, X.jsx = function(c, _, w, b, L) {
       var N = 1e4 > K.recentlyCreatedOwnerStacks++;
       return u(
@@ -257,7 +257,7 @@ React keys must be passed directly to JSX without using spread:
         b,
         L,
         N ? Error("react-stack-top-frame") : se,
-        N ? Y(r(c)) : B
+        N ? V(r(c)) : Y
       );
     }, X.jsxs = function(c, _, w, b, L) {
       var N = 1e4 > K.recentlyCreatedOwnerStacks++;
@@ -269,7 +269,7 @@ React keys must be passed directly to JSX without using spread:
         b,
         L,
         N ? Error("react-stack-top-frame") : se,
-        N ? Y(r(c)) : B
+        N ? V(r(c)) : Y
       );
     };
   }()), X;
@@ -628,7 +628,7 @@ var R = je, W = class {
     const r = new URL(e, "http://127.0.0.1")[t === "fragment" ? "hash" : "search"];
     return new URLSearchParams(r.slice(1));
   }
-}, V = ";", J = class extends Error {
+}, B = ";", J = class extends Error {
   constructor(e, t) {
     var s, r, i;
     if (super(e.error_description || e.error || ""), this.form = t, this.name = "ErrorResponse", !e.error)
@@ -978,19 +978,19 @@ var R = je, W = class {
     refreshTokenAllowedScope: Z,
     // extra
     extraQueryParams: le = {},
-    extraTokenParams: Y = {},
+    extraTokenParams: V = {},
     extraHeaders: ee = {},
     dpop: te,
     omitScopeWhenRequesting: se = !1
   }) {
-    var B;
+    var Y;
     if (this.authority = e, t ? this.metadataUrl = t : (this.metadataUrl = e, e && (this.metadataUrl.endsWith("/") || (this.metadataUrl += "/"), this.metadataUrl += ".well-known/openid-configuration")), this.metadata = s, this.metadataSeed = i, this.signingKeys = r, this.client_id = o, this.client_secret = n, this.response_type = d, this.scope = l, this.redirect_uri = a, this.post_logout_redirect_uri = u, this.client_authentication = g, this.prompt = h, this.display = m, this.max_age = C, this.ui_locales = T, this.acr_values = p, this.resource = S, this.response_mode = y, this.filterProtocolClaims = P ?? !0, this.loadUserInfo = !!I, this.staleStateAgeInSeconds = v, this.mergeClaimsStrategy = O, this.omitScopeWhenRequesting = se, this.disablePKCE = !!x, this.revokeTokenAdditionalContentTypes = F, this.fetchRequestCredentials = K || "same-origin", this.requestTimeoutInSeconds = U, E)
       this.stateStore = E;
     else {
       const re = typeof window < "u" ? window.localStorage : new qe();
       this.stateStore = new Me({ store: re });
     }
-    if (this.refreshTokenAllowedScope = Z, this.extraQueryParams = le, this.extraTokenParams = Y, this.extraHeaders = ee, this.dpop = te, this.dpop && !((B = this.dpop) != null && B.store))
+    if (this.refreshTokenAllowedScope = Z, this.extraQueryParams = le, this.extraTokenParams = V, this.extraHeaders = ee, this.dpop = te, this.dpop && !((Y = this.dpop) != null && Y.store))
       throw new Error("A DPoPStore is required when dpop is enabled");
   }
 }, gt = class {
@@ -1347,7 +1347,7 @@ var R = je, W = class {
     }), v = new URL(t);
     v.searchParams.append("client_id", r), v.searchParams.append("redirect_uri", i), v.searchParams.append("response_type", o), P || v.searchParams.append("scope", n), g && v.searchParams.append("nonce", g), y && v.searchParams.append("dpop_jkt", y);
     let O = U.id;
-    h && (O = `${O}${V}${h}`), v.searchParams.append("state", O), U.code_challenge && (v.searchParams.append("code_challenge", U.code_challenge), v.searchParams.append("code_challenge_method", "S256")), m && (Array.isArray(m) ? m : [m]).forEach((E) => v.searchParams.append("resource", E));
+    h && (O = `${O}${B}${h}`), v.searchParams.append("state", O), U.code_challenge && (v.searchParams.append("code_challenge", U.code_challenge), v.searchParams.append("code_challenge_method", "S256")), m && (Array.isArray(m) ? m : [m]).forEach((E) => v.searchParams.append("resource", E));
     for (const [x, E] of Object.entries({ response_mode: l, ...I, ...T }))
       E != null && v.searchParams.append(x, E.toString());
     return new He({
@@ -1360,8 +1360,8 @@ Le._logger = new f("SigninRequest");
 var _t = Le, pt = "openid", he = class {
   constructor(e) {
     if (this.access_token = "", this.token_type = "", this.profile = {}, this.state = e.get("state"), this.session_state = e.get("session_state"), this.state) {
-      const t = decodeURIComponent(this.state).split(V);
-      this.state = t[0], t.length > 1 && (this.url_state = t.slice(1).join(V));
+      const t = decodeURIComponent(this.state).split(B);
+      this.state = t[0], t.length > 1 && (this.url_state = t.slice(1).join(B));
     }
     this.error = e.get("error"), this.error_description = e.get("error_description"), this.error_uri = e.get("error_uri"), this.code = e.get("code");
   }
@@ -1393,7 +1393,7 @@ var _t = Le, pt = "openid", he = class {
     if (s && l.searchParams.append("id_token_hint", s), n && l.searchParams.append("client_id", n), r && (l.searchParams.append("post_logout_redirect_uri", r), t || d)) {
       this.state = new ce({ data: t, request_type: o, url_state: d });
       let a = this.state.id;
-      d && (a = `${a}${V}${d}`), l.searchParams.append("state", a);
+      d && (a = `${a}${B}${d}`), l.searchParams.append("state", a);
     }
     for (const [a, u] of Object.entries({ ...i }))
       u != null && l.searchParams.append(a, u.toString());
@@ -1402,8 +1402,8 @@ var _t = Le, pt = "openid", he = class {
 }, wt = class {
   constructor(e) {
     if (this.state = e.get("state"), this.state) {
-      const t = decodeURIComponent(this.state).split(V);
-      this.state = t[0], t.length > 1 && (this.url_state = t.slice(1).join(V));
+      const t = decodeURIComponent(this.state).split(B);
+      this.state = t[0], t.length > 1 && (this.url_state = t.slice(1).join(B));
     }
     this.error = e.get("error"), this.error_description = e.get("error_description"), this.error_uri = e.get("error_uri");
   }
@@ -1844,7 +1844,7 @@ var _t = Le, pt = "openid", he = class {
   toolbar: !1,
   height: 640,
   closePopupWindowAfterInSeconds: -1
-}, ze = "_blank", kt = 60, Et = 2, Ve = 10, Rt = class extends ve {
+}, ze = "_blank", kt = 60, Et = 2, Be = 10, Rt = class extends ve {
   constructor(e) {
     const {
       popup_redirect_uri: t = e.redirect_uri,
@@ -1872,18 +1872,18 @@ var _t = Le, pt = "openid", he = class {
       accessTokenExpiringNotificationTimeInSeconds: O = kt,
       userStore: x
     } = e;
-    if (super(e), this.popup_redirect_uri = t, this.popup_post_logout_redirect_uri = s, this.popupWindowFeatures = r, this.popupWindowTarget = i, this.redirectMethod = o, this.redirectTarget = n, this.iframeNotifyParentOrigin = d, this.iframeScriptOrigin = l, this.silent_redirect_uri = u, this.silentRequestTimeoutInSeconds = g || a || Ve, this.automaticSilentRenew = h, this.validateSubOnSilentRenew = m, this.includeIdTokenInSilentRenew = C, this.monitorSession = T, this.monitorAnonymousSession = p, this.checkSessionIntervalInSeconds = S, this.stopCheckSessionOnError = P, this.query_status_response_type = y, this.revokeTokenTypes = I, this.revokeTokensOnSignout = U, this.includeIdTokenInSilentSignout = v, this.accessTokenExpiringNotificationTimeInSeconds = O, x)
+    if (super(e), this.popup_redirect_uri = t, this.popup_post_logout_redirect_uri = s, this.popupWindowFeatures = r, this.popupWindowTarget = i, this.redirectMethod = o, this.redirectTarget = n, this.iframeNotifyParentOrigin = d, this.iframeScriptOrigin = l, this.silent_redirect_uri = u, this.silentRequestTimeoutInSeconds = g || a || Be, this.automaticSilentRenew = h, this.validateSubOnSilentRenew = m, this.includeIdTokenInSilentRenew = C, this.monitorSession = T, this.monitorAnonymousSession = p, this.checkSessionIntervalInSeconds = S, this.stopCheckSessionOnError = P, this.query_status_response_type = y, this.revokeTokenTypes = I, this.revokeTokensOnSignout = U, this.includeIdTokenInSilentSignout = v, this.accessTokenExpiringNotificationTimeInSeconds = O, x)
       this.userStore = x;
     else {
       const E = typeof window < "u" ? window.sessionStorage : new qe();
       this.userStore = new Me({ store: E });
     }
   }
-}, Ue = class Ye extends Fe {
+}, Ue = class Ve extends Fe {
   constructor({
-    silentRequestTimeoutInSeconds: t = Ve
+    silentRequestTimeoutInSeconds: t = Be
   }) {
-    super(), this._logger = new f("IFrameWindow"), this._timeoutInSeconds = t, this._frame = Ye.createHiddenIframe(), this._window = this._frame.contentWindow;
+    super(), this._logger = new f("IFrameWindow"), this._timeoutInSeconds = t, this._frame = Ve.createHiddenIframe(), this._window = this._frame.contentWindow;
   }
   static createHiddenIframe() {
     const t = window.document.createElement("iframe");
@@ -2712,7 +2712,7 @@ var jt = {
   let t = new URLSearchParams(e.search);
   return !!((t.get("code") || t.get("error")) && t.get("state") || (t = new URLSearchParams(e.hash.replace("#", "?")), (t.get("code") || t.get("error")) && t.get("state")));
 }, Dt = Re("signinCallback", "Sign-in failed"), $t = Re("signoutCallback", "Sign-out failed"), Lt = Re("renewSilent", "Renew silent failed");
-function Be(e, t) {
+function Ye(e, t) {
   return {
     name: pe(e, "name", () => "Error"),
     message: pe(e, "message", () => t),
@@ -2722,7 +2722,7 @@ function Be(e, t) {
 }
 function Re(e, t) {
   return (s) => ({
-    ...Be(s, t),
+    ...Ye(s, t),
     source: e
   });
 }
@@ -2791,7 +2791,7 @@ var Ht = [
               return g({
                 type: "ERROR",
                 error: {
-                  ...Be(y, `Unknown error while executing ${p}(...).`),
+                  ...Ye(y, `Unknown error while executing ${p}(...).`),
                   source: p,
                   args: S
                 }
@@ -2864,7 +2864,6 @@ var Ht = [
   const e = A.useContext(Ee);
   return e || console.warn("AuthProvider context is undefined, please verify you are calling useAuth() as child of a <AuthProvider> component."), e;
 };
-throw new Error("VITE_COGNITO_AUTHORITY environment variable is not set");
 const Kt = {
   // authority,
   // client_id: clientId,
@@ -2880,7 +2879,7 @@ const Kt = {
   extraQueryParams: { lang: "ja" },
   onSigninCallback: () => window.history.replaceState({}, document.title, window.location.pathname)
 };
-function Yt(e, t) {
+function Vt(e, t) {
   const s = window.location.origin;
   window.location.href = `${e}/logout?client_id=${t}&logout_uri=${encodeURIComponent(
     s
@@ -2895,8 +2894,8 @@ const zt = ({ children: e, Login: t }) => {
     /* @__PURE__ */ H.jsx("p", { children: "No project permission" }),
     /* @__PURE__ */ H.jsx("button", { onClick: () => s.removeUser(), children: "Sign out" })
   ] }) : /* @__PURE__ */ H.jsx(t, {});
-}, Bt = ({ children: e, Login: t, ...s }) => /* @__PURE__ */ H.jsx(Jt, { authConfig: Kt, ...s, children: /* @__PURE__ */ H.jsx(zt, { Login: t, children: e }) });
+}, Yt = ({ children: e, Login: t, ...s }) => /* @__PURE__ */ H.jsx(Jt, { authConfig: Kt, ...s, children: /* @__PURE__ */ H.jsx(zt, { Login: t, children: e }) });
 export {
-  Bt as AiResearchIdpProvider,
-  Yt as signOutRedirect
+  Yt as AiResearchIdpProvider,
+  Vt as signOutRedirect
 };

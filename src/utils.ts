@@ -4,18 +4,6 @@ import type { AuthProviderProps } from "react-oidc-context";
 
 export type Profile = IdTokenClaims & CognitoIdTokenPayload
 
-if (import.meta.env.PROD) {
-  if (!import.meta.env.VITE_COGNITO_AUTHORITY) {
-    throw new Error("VITE_COGNITO_AUTHORITY environment variable is not set");
-  }
-  if (!import.meta.env.VITE_COGNITO_CLIENT_ID) {
-    throw new Error("VITE_COGNITO_CLIENT_ID environment variable is not set");
-  }
-  if (!import.meta.env.VITE_COGNITO_DOMAIN) {
-    throw new Error("VITE_COGNITO_DOMAIN environment variable is not set");
-  }
-}
-
 export const authConfig: AuthProviderProps = {
   // authority,
   // client_id: clientId,
