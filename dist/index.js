@@ -1,4 +1,4 @@
-import O from "react";
+import A from "react";
 var ie = { exports: {} }, G = {};
 /**
  * @license React
@@ -50,35 +50,35 @@ function Qe() {
         return c.$$typeof === F ? null : c.displayName || c.name || null;
       if (typeof c == "string") return c;
       switch (c) {
-        case P:
+        case T:
           return "Fragment";
         case S:
           return "Profiler";
         case p:
           return "StrictMode";
-        case A:
+        case U:
           return "Suspense";
         case v:
           return "SuspenseList";
-        case R:
+        case E:
           return "Activity";
       }
       if (typeof c == "object")
         switch (typeof c.tag == "number" && console.error(
           "Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."
         ), c.$$typeof) {
-          case U:
+          case C:
             return "Portal";
-          case x:
+          case P:
             return (c.displayName || "Context") + ".Provider";
           case y:
             return (c._context.displayName || "Context") + ".Consumer";
           case I:
             var _ = c.render;
             return c = c.displayName, c || (c = _.displayName || _.name || "", c = c !== "" ? "ForwardRef(" + c + ")" : "ForwardRef"), c;
-          case N:
+          case O:
             return _ = c.displayName || null, _ !== null ? _ : e(c.type) || "Memo";
-          case C:
+          case x:
             _ = c._payload, c = c._init;
             try {
               return e(c(_));
@@ -99,17 +99,17 @@ function Qe() {
       }
       if (_) {
         _ = console;
-        var w = _.error, k = typeof Symbol == "function" && Symbol.toStringTag && c[Symbol.toStringTag] || c.constructor.name || "Object";
+        var w = _.error, b = typeof Symbol == "function" && Symbol.toStringTag && c[Symbol.toStringTag] || c.constructor.name || "Object";
         return w.call(
           _,
           "The provided key is an unsupported type %s. This value must be coerced to a string before using it here.",
-          k
+          b
         ), t(c);
       }
     }
     function r(c) {
-      if (c === P) return "<>";
-      if (typeof c == "object" && c !== null && c.$$typeof === C)
+      if (c === T) return "<>";
+      if (typeof c == "object" && c !== null && c.$$typeof === x)
         return "<...>";
       try {
         var _ = e(c);
@@ -150,12 +150,12 @@ function Qe() {
         "Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release."
       )), c = this.props.ref, c !== void 0 ? c : null;
     }
-    function a(c, _, w, k, H, j, de, ue) {
-      return w = j.ref, c = {
+    function a(c, _, w, b, H, N, de, ue) {
+      return w = N.ref, c = {
         $$typeof: m,
         type: c,
         key: _,
-        props: j,
+        props: N,
         _owner: H
       }, (w !== void 0 ? w : null) !== null ? Object.defineProperty(c, "ref", {
         enumerable: !1,
@@ -182,49 +182,49 @@ function Qe() {
         value: ue
       }), Object.freeze && (Object.freeze(c.props), Object.freeze(c)), c;
     }
-    function u(c, _, w, k, H, j, de, ue) {
-      var E = _.children;
-      if (E !== void 0)
-        if (k)
-          if (le(E)) {
-            for (k = 0; k < E.length; k++)
-              g(E[k]);
-            Object.freeze && Object.freeze(E);
+    function u(c, _, w, b, H, N, de, ue) {
+      var k = _.children;
+      if (k !== void 0)
+        if (b)
+          if (le(k)) {
+            for (b = 0; b < k.length; b++)
+              g(k[b]);
+            Object.freeze && Object.freeze(k);
           } else
             console.error(
               "React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead."
             );
-        else g(E);
+        else g(k);
       if (Z.call(_, "key")) {
-        E = e(c);
+        k = e(c);
         var z = Object.keys(_).filter(function(Ge) {
           return Ge !== "key";
         });
-        k = 0 < z.length ? "{key: someKey, " + z.join(": ..., ") + ": ...}" : "{key: someKey}", re[E + k] || (z = 0 < z.length ? "{" + z.join(": ..., ") + ": ...}" : "{}", console.error(
+        b = 0 < z.length ? "{key: someKey, " + z.join(": ..., ") + ": ...}" : "{key: someKey}", re[k + b] || (z = 0 < z.length ? "{" + z.join(": ..., ") + ": ...}" : "{}", console.error(
           `A props object containing a "key" prop is being spread into JSX:
   let props = %s;
   <%s {...props} />
 React keys must be passed directly to JSX without using spread:
   let props = %s;
   <%s key={someKey} {...props} />`,
+          b,
           k,
-          E,
           z,
-          E
-        ), re[E + k] = !0);
+          k
+        ), re[k + b] = !0);
       }
-      if (E = null, w !== void 0 && (s(w), E = "" + w), n(_) && (s(_.key), E = "" + _.key), "key" in _) {
+      if (k = null, w !== void 0 && (s(w), k = "" + w), n(_) && (s(_.key), k = "" + _.key), "key" in _) {
         w = {};
         for (var ge in _)
           ge !== "key" && (w[ge] = _[ge]);
       } else w = _;
-      return E && d(
+      return k && d(
         w,
         typeof c == "function" ? c.displayName || c.name || "Unknown" : c
       ), a(
         c,
-        E,
-        j,
+        k,
+        N,
         H,
         i(),
         w,
@@ -235,7 +235,7 @@ React keys must be passed directly to JSX without using spread:
     function g(c) {
       typeof c == "object" && c !== null && c.$$typeof === m && c._store && (c._store.validated = 1);
     }
-    var h = O, m = Symbol.for("react.transitional.element"), U = Symbol.for("react.portal"), P = Symbol.for("react.fragment"), p = Symbol.for("react.strict_mode"), S = Symbol.for("react.profiler"), y = Symbol.for("react.consumer"), x = Symbol.for("react.context"), I = Symbol.for("react.forward_ref"), A = Symbol.for("react.suspense"), v = Symbol.for("react.suspense_list"), N = Symbol.for("react.memo"), C = Symbol.for("react.lazy"), R = Symbol.for("react.activity"), F = Symbol.for("react.client.reference"), K = h.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, Z = Object.prototype.hasOwnProperty, le = Array.isArray, V = console.createTask ? console.createTask : function() {
+    var h = A, m = Symbol.for("react.transitional.element"), C = Symbol.for("react.portal"), T = Symbol.for("react.fragment"), p = Symbol.for("react.strict_mode"), S = Symbol.for("react.profiler"), y = Symbol.for("react.consumer"), P = Symbol.for("react.context"), I = Symbol.for("react.forward_ref"), U = Symbol.for("react.suspense"), v = Symbol.for("react.suspense_list"), O = Symbol.for("react.memo"), x = Symbol.for("react.lazy"), E = Symbol.for("react.activity"), F = Symbol.for("react.client.reference"), K = h.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, Z = Object.prototype.hasOwnProperty, le = Array.isArray, V = console.createTask ? console.createTask : function() {
       return null;
     };
     h = {
@@ -247,38 +247,38 @@ React keys must be passed directly to JSX without using spread:
       h,
       o
     )(), Y = V(r(o)), re = {};
-    X.Fragment = P, X.jsx = function(c, _, w, k, H) {
-      var j = 1e4 > K.recentlyCreatedOwnerStacks++;
+    X.Fragment = T, X.jsx = function(c, _, w, b, H) {
+      var N = 1e4 > K.recentlyCreatedOwnerStacks++;
       return u(
         c,
         _,
         w,
         !1,
-        k,
+        b,
         H,
-        j ? Error("react-stack-top-frame") : se,
-        j ? V(r(c)) : Y
+        N ? Error("react-stack-top-frame") : se,
+        N ? V(r(c)) : Y
       );
-    }, X.jsxs = function(c, _, w, k, H) {
-      var j = 1e4 > K.recentlyCreatedOwnerStacks++;
+    }, X.jsxs = function(c, _, w, b, H) {
+      var N = 1e4 > K.recentlyCreatedOwnerStacks++;
       return u(
         c,
         _,
         w,
         !0,
-        k,
+        b,
         H,
-        j ? Error("react-stack-top-frame") : se,
-        j ? V(r(c)) : Y
+        N ? Error("react-stack-top-frame") : se,
+        N ? V(r(c)) : Y
       );
     };
   }()), X;
 }
-var xe;
+var Ie;
 function Ze() {
-  return xe || (xe = 1, process.env.NODE_ENV === "production" ? ie.exports = Xe() : ie.exports = Qe()), ie.exports;
+  return Ie || (Ie = 1, process.env.NODE_ENV === "production" ? ie.exports = Xe() : ie.exports = Qe()), ie.exports;
 }
-var b = Ze();
+var M = Ze();
 class Q extends Error {
 }
 Q.prototype.name = "InvalidTokenError";
@@ -353,22 +353,22 @@ var rt = {
   }
   e.setLogger = r;
 })(oe || (oe = {}));
-var f = class q {
+var f = class j {
   constructor(t) {
     this._name = t;
   }
   /* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
   debug(...t) {
-    D >= 4 && $.debug(q._format(this._name, this._method), ...t);
+    D >= 4 && $.debug(j._format(this._name, this._method), ...t);
   }
   info(...t) {
-    D >= 3 && $.info(q._format(this._name, this._method), ...t);
+    D >= 3 && $.info(j._format(this._name, this._method), ...t);
   }
   warn(...t) {
-    D >= 2 && $.warn(q._format(this._name, this._method), ...t);
+    D >= 2 && $.warn(j._format(this._name, this._method), ...t);
   }
   error(...t) {
-    D >= 1 && $.error(q._format(this._name, this._method), ...t);
+    D >= 1 && $.error(j._format(this._name, this._method), ...t);
   }
   /* eslint-enable @typescript-eslint/no-unsafe-enum-comparison */
   throw(t) {
@@ -379,7 +379,7 @@ var f = class q {
     return s._method = t, s.debug("begin"), s;
   }
   static createStatic(t, s) {
-    const r = new q(`${t}.${s}`);
+    const r = new j(`${t}.${s}`);
     return r.debug("begin"), r;
   }
   static _format(t, s) {
@@ -389,16 +389,16 @@ var f = class q {
   /* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
   // helpers for static class methods
   static debug(t, ...s) {
-    D >= 4 && $.debug(q._format(t), ...s);
+    D >= 4 && $.debug(j._format(t), ...s);
   }
   static info(t, ...s) {
-    D >= 3 && $.info(q._format(t), ...s);
+    D >= 3 && $.info(j._format(t), ...s);
   }
   static warn(t, ...s) {
-    D >= 2 && $.warn(q._format(t), ...s);
+    D >= 2 && $.warn(j._format(t), ...s);
   }
   static error(t, ...s) {
-    D >= 1 && $.error(q._format(t), ...s);
+    D >= 1 && $.error(j._format(t), ...s);
   }
   /* eslint-enable @typescript-eslint/no-unsafe-enum-comparison */
 };
@@ -413,17 +413,17 @@ var ae = class {
     }
   }
   static async generateSignedJwt(e, t, s) {
-    const r = T.encodeBase64Url(new TextEncoder().encode(JSON.stringify(e))), i = T.encodeBase64Url(new TextEncoder().encode(JSON.stringify(t))), o = `${r}.${i}`, n = await window.crypto.subtle.sign(
+    const r = R.encodeBase64Url(new TextEncoder().encode(JSON.stringify(e))), i = R.encodeBase64Url(new TextEncoder().encode(JSON.stringify(t))), o = `${r}.${i}`, n = await window.crypto.subtle.sign(
       {
         name: "ECDSA",
         hash: { name: "SHA-256" }
       },
       s,
       new TextEncoder().encode(o)
-    ), d = T.encodeBase64Url(new Uint8Array(n));
+    ), d = R.encodeBase64Url(new Uint8Array(n));
     return `${o}.${d}`;
   }
-}, it = "10000000-1000-4000-8000-100000000000", fe = (e) => btoa([...new Uint8Array(e)].map((t) => String.fromCharCode(t)).join("")), je = class M {
+}, it = "10000000-1000-4000-8000-100000000000", fe = (e) => btoa([...new Uint8Array(e)].map((t) => String.fromCharCode(t)).join("")), je = class q {
   static _randomWord() {
     const t = new Uint32Array(1);
     return crypto.getRandomValues(t), t[0];
@@ -434,14 +434,14 @@ var ae = class {
   static generateUUIDv4() {
     return it.replace(
       /[018]/g,
-      (s) => (+s ^ M._randomWord() & 15 >> +s / 4).toString(16)
+      (s) => (+s ^ q._randomWord() & 15 >> +s / 4).toString(16)
     ).replace(/-/g, "");
   }
   /**
    * PKCE: Generate a code verifier
    */
   static generateCodeVerifier() {
-    return M.generateUUIDv4() + M.generateUUIDv4() + M.generateUUIDv4();
+    return q.generateUUIDv4() + q.generateUUIDv4() + q.generateUUIDv4();
   }
   /**
    * PKCE: Generate a code challenge
@@ -510,8 +510,8 @@ var ae = class {
       default:
         throw new Error("Unknown jwk type");
     }
-    const r = await M.hash("SHA-256", JSON.stringify(s));
-    return M.encodeBase64Url(r);
+    const r = await q.hash("SHA-256", JSON.stringify(s));
+    return q.encodeBase64Url(r);
   }
   static async generateDPoPProof({
     url: t,
@@ -527,7 +527,7 @@ var ae = class {
       htu: t,
       iat: Math.floor(Date.now() / 1e3)
     };
-    s && (n = await M.hash("SHA-256", s), d = M.encodeBase64Url(n), l.ath = d), o && (l.nonce = o);
+    s && (n = await q.hash("SHA-256", s), d = q.encodeBase64Url(n), l.ath = d), o && (l.nonce = o);
     try {
       const a = await crypto.subtle.exportKey("jwk", i.publicKey), u = {
         alg: "ES256",
@@ -547,7 +547,7 @@ var ae = class {
   static async generateDPoPJkt(t) {
     try {
       const s = await crypto.subtle.exportKey("jwk", t.publicKey);
-      return await M.customCalculateJwkThumbprint(s);
+      return await q.customCalculateJwkThumbprint(s);
     } catch (s) {
       throw s instanceof TypeError ? new Error(`Could not retrieve dpop keys from storage: ${s.message}`) : s;
     }
@@ -564,7 +564,7 @@ var ae = class {
   }
 };
 je.encodeBase64Url = (e) => fe(e).replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
-var T = je, W = class {
+var R = je, W = class {
   constructor(e) {
     this._name = e, this._callbacks = [], this._logger = new f(`Event('${this._name}')`);
   }
@@ -580,7 +580,7 @@ var T = je, W = class {
     for (const t of this._callbacks)
       await t(...e);
   }
-}, Ie = class {
+}, xe = class {
   /**
    * Populates a map of window features with a placement centered in front of
    * the current window. If no explicit width is given, a default value is
@@ -959,20 +959,20 @@ var T = je, W = class {
     // optional protocol
     prompt: h,
     display: m,
-    max_age: U,
-    ui_locales: P,
+    max_age: C,
+    ui_locales: T,
     acr_values: p,
     resource: S,
     response_mode: y,
     // behavior flags
-    filterProtocolClaims: x = !0,
+    filterProtocolClaims: P = !0,
     loadUserInfo: I = !1,
-    requestTimeoutInSeconds: A,
+    requestTimeoutInSeconds: U,
     staleStateAgeInSeconds: v = ut,
-    mergeClaimsStrategy: N = { array: "replace" },
-    disablePKCE: C = !1,
+    mergeClaimsStrategy: O = { array: "replace" },
+    disablePKCE: x = !1,
     // other behavior
-    stateStore: R,
+    stateStore: E,
     revokeTokenAdditionalContentTypes: F,
     fetchRequestCredentials: K,
     refreshTokenAllowedScope: Z,
@@ -984,8 +984,8 @@ var T = je, W = class {
     omitScopeWhenRequesting: se = !1
   }) {
     var Y;
-    if (this.authority = e, t ? this.metadataUrl = t : (this.metadataUrl = e, e && (this.metadataUrl.endsWith("/") || (this.metadataUrl += "/"), this.metadataUrl += ".well-known/openid-configuration")), this.metadata = s, this.metadataSeed = i, this.signingKeys = r, this.client_id = o, this.client_secret = n, this.response_type = d, this.scope = l, this.redirect_uri = a, this.post_logout_redirect_uri = u, this.client_authentication = g, this.prompt = h, this.display = m, this.max_age = U, this.ui_locales = P, this.acr_values = p, this.resource = S, this.response_mode = y, this.filterProtocolClaims = x ?? !0, this.loadUserInfo = !!I, this.staleStateAgeInSeconds = v, this.mergeClaimsStrategy = N, this.omitScopeWhenRequesting = se, this.disablePKCE = !!C, this.revokeTokenAdditionalContentTypes = F, this.fetchRequestCredentials = K || "same-origin", this.requestTimeoutInSeconds = A, R)
-      this.stateStore = R;
+    if (this.authority = e, t ? this.metadataUrl = t : (this.metadataUrl = e, e && (this.metadataUrl.endsWith("/") || (this.metadataUrl += "/"), this.metadataUrl += ".well-known/openid-configuration")), this.metadata = s, this.metadataSeed = i, this.signingKeys = r, this.client_id = o, this.client_secret = n, this.response_type = d, this.scope = l, this.redirect_uri = a, this.post_logout_redirect_uri = u, this.client_authentication = g, this.prompt = h, this.display = m, this.max_age = C, this.ui_locales = T, this.acr_values = p, this.resource = S, this.response_mode = y, this.filterProtocolClaims = P ?? !0, this.loadUserInfo = !!I, this.staleStateAgeInSeconds = v, this.mergeClaimsStrategy = O, this.omitScopeWhenRequesting = se, this.disablePKCE = !!x, this.revokeTokenAdditionalContentTypes = F, this.fetchRequestCredentials = K || "same-origin", this.requestTimeoutInSeconds = U, E)
+      this.stateStore = E;
     else {
       const re = typeof window < "u" ? window.localStorage : new qe();
       this.stateStore = new Me({ store: re });
@@ -1052,7 +1052,7 @@ var T = je, W = class {
       case "client_secret_basic":
         if (r == null)
           throw n.throw(new Error("A client_secret is required")), null;
-        l = T.generateBasicAuth(s, r);
+        l = R.generateBasicAuth(s, r);
         break;
       case "client_secret_post":
         d.append("client_id", s), r && d.append("client_secret", r);
@@ -1092,7 +1092,7 @@ var T = je, W = class {
       case "client_secret_basic":
         if (s == null)
           throw o.throw(new Error("A client_secret is required")), null;
-        d = T.generateBasicAuth(t, s);
+        d = R.generateBasicAuth(t, s);
         break;
       case "client_secret_post":
         n.append("client_id", t), s && n.append("client_secret", s);
@@ -1126,7 +1126,7 @@ var T = je, W = class {
       case "client_secret_basic":
         if (s == null)
           throw n.throw(new Error("A client_secret is required")), null;
-        l = T.generateBasicAuth(t, s);
+        l = R.generateBasicAuth(t, s);
         break;
       case "client_secret_post":
         d.append("client_id", t), s && d.append("client_secret", s);
@@ -1224,7 +1224,7 @@ var T = je, W = class {
   }
 }, ce = class Se {
   constructor(t) {
-    this.id = t.id || T.generateUUIDv4(), this.data = t.data, t.created && t.created > 0 ? this.created = t.created : this.created = L.getEpochTime(), this.request_type = t.request_type, this.url_state = t.url_state;
+    this.id = t.id || R.generateUUIDv4(), this.data = t.data, t.created && t.created > 0 ? this.created = t.created : this.created = L.getEpochTime(), this.request_type = t.request_type, this.url_state = t.url_state;
   }
   toStorageString() {
     return new f("State").create("toStorageString"), JSON.stringify({
@@ -1261,7 +1261,7 @@ var T = je, W = class {
     super(t), this.code_verifier = t.code_verifier, this.code_challenge = t.code_challenge, this.authority = t.authority, this.client_id = t.client_id, this.redirect_uri = t.redirect_uri, this.scope = t.scope, this.client_secret = t.client_secret, this.extraTokenParams = t.extraTokenParams, this.response_mode = t.response_mode, this.skipUserInfo = t.skipUserInfo;
   }
   static async create(t) {
-    const s = t.code_verifier === !0 ? T.generateCodeVerifier() : t.code_verifier || void 0, r = s ? await T.generateCodeChallenge(s) : void 0;
+    const s = t.code_verifier === !0 ? R.generateCodeVerifier() : t.code_verifier || void 0, r = s ? await R.generateCodeChallenge(s) : void 0;
     return new ye({
       ...t,
       code_verifier: s,
@@ -1311,12 +1311,12 @@ var T = je, W = class {
     nonce: g,
     url_state: h,
     resource: m,
-    skipUserInfo: U,
-    extraQueryParams: P,
+    skipUserInfo: C,
+    extraQueryParams: T,
     extraTokenParams: p,
     disablePKCE: S,
     dpopJkt: y,
-    omitScopeWhenRequesting: x,
+    omitScopeWhenRequesting: P,
     ...I
   }) {
     if (!t)
@@ -1331,7 +1331,7 @@ var T = je, W = class {
       throw this._logger.error("create: No scope passed"), new Error("scope");
     if (!s)
       throw this._logger.error("create: No authority passed"), new Error("authority");
-    const A = await $e.create({
+    const U = await $e.create({
       data: d,
       request_type: a,
       url_state: h,
@@ -1343,16 +1343,16 @@ var T = je, W = class {
       client_secret: u,
       scope: n,
       extraTokenParams: p,
-      skipUserInfo: U
+      skipUserInfo: C
     }), v = new URL(t);
-    v.searchParams.append("client_id", r), v.searchParams.append("redirect_uri", i), v.searchParams.append("response_type", o), x || v.searchParams.append("scope", n), g && v.searchParams.append("nonce", g), y && v.searchParams.append("dpop_jkt", y);
-    let N = A.id;
-    h && (N = `${N}${B}${h}`), v.searchParams.append("state", N), A.code_challenge && (v.searchParams.append("code_challenge", A.code_challenge), v.searchParams.append("code_challenge_method", "S256")), m && (Array.isArray(m) ? m : [m]).forEach((R) => v.searchParams.append("resource", R));
-    for (const [C, R] of Object.entries({ response_mode: l, ...I, ...P }))
-      R != null && v.searchParams.append(C, R.toString());
+    v.searchParams.append("client_id", r), v.searchParams.append("redirect_uri", i), v.searchParams.append("response_type", o), P || v.searchParams.append("scope", n), g && v.searchParams.append("nonce", g), y && v.searchParams.append("dpop_jkt", y);
+    let O = U.id;
+    h && (O = `${O}${B}${h}`), v.searchParams.append("state", O), U.code_challenge && (v.searchParams.append("code_challenge", U.code_challenge), v.searchParams.append("code_challenge_method", "S256")), m && (Array.isArray(m) ? m : [m]).forEach((E) => v.searchParams.append("resource", E));
+    for (const [x, E] of Object.entries({ response_mode: l, ...I, ...T }))
+      E != null && v.searchParams.append(x, E.toString());
     return new He({
       url: v.href,
-      state: A
+      state: U
     });
   }
 };
@@ -1470,23 +1470,23 @@ var _t = Le, pt = "openid", he = class {
     redirect_uri: g = this.settings.redirect_uri,
     prompt: h = this.settings.prompt,
     display: m = this.settings.display,
-    max_age: U = this.settings.max_age,
-    ui_locales: P = this.settings.ui_locales,
+    max_age: C = this.settings.max_age,
+    ui_locales: T = this.settings.ui_locales,
     acr_values: p = this.settings.acr_values,
     resource: S = this.settings.resource,
     response_mode: y = this.settings.response_mode,
-    extraQueryParams: x = this.settings.extraQueryParams,
+    extraQueryParams: P = this.settings.extraQueryParams,
     extraTokenParams: I = this.settings.extraTokenParams,
-    dpopJkt: A,
+    dpopJkt: U,
     omitScopeWhenRequesting: v = this.settings.omitScopeWhenRequesting
   }) {
-    const N = this._logger.create("createSigninRequest");
+    const O = this._logger.create("createSigninRequest");
     if (a !== "code")
       throw new Error("Only the Authorization Code flow (with PKCE) is supported");
-    const C = await this.metadataService.getAuthorizationEndpoint();
-    N.debug("Received authorization endpoint", C);
-    const R = await _t.create({
-      url: C,
+    const x = await this.metadataService.getAuthorizationEndpoint();
+    O.debug("Received authorization endpoint", x);
+    const E = await _t.create({
+      url: x,
       authority: this.settings.authority,
       client_id: this.settings.client_id,
       redirect_uri: g,
@@ -1496,16 +1496,16 @@ var _t = Le, pt = "openid", he = class {
       url_state: l,
       prompt: h,
       display: m,
-      max_age: U,
-      ui_locales: P,
+      max_age: C,
+      ui_locales: T,
       id_token_hint: i,
       login_hint: o,
       acr_values: p,
-      dpopJkt: A,
+      dpopJkt: U,
       resource: S,
       request: t,
       request_uri: s,
-      extraQueryParams: x,
+      extraQueryParams: P,
       extraTokenParams: I,
       request_type: r,
       response_mode: y,
@@ -1516,8 +1516,8 @@ var _t = Le, pt = "openid", he = class {
       omitScopeWhenRequesting: v
     });
     await this.clearStaleState();
-    const F = R.state;
-    return await this.settings.stateStore.set(F.id, F.toStorageString()), R;
+    const F = E.state;
+    return await this.settings.stateStore.set(F.id, F.toStorageString()), E;
   }
   async readSigninResponseState(e, t = !1) {
     const s = this._logger.create("readSigninResponseState"), r = new he(we.readParams(e, this.settings.response_mode));
@@ -1547,7 +1547,7 @@ var _t = Le, pt = "openid", he = class {
   }
   async getDpopProof(e, t) {
     let s, r;
-    return (await e.getAllKeys()).includes(this.settings.client_id) ? (r = await e.get(this.settings.client_id), r.nonce !== t && t && (r.nonce = t, await e.set(this.settings.client_id, r))) : (s = await T.generateDPoPKeys(), r = new We(s, t), await e.set(this.settings.client_id, r)), await T.generateDPoPProof({
+    return (await e.getAllKeys()).includes(this.settings.client_id) ? (r = await e.get(this.settings.client_id), r.nonce !== t && t && (r.nonce = t, await e.set(this.settings.client_id, r))) : (s = await R.generateDPoPKeys(), r = new We(s, t), await e.set(this.settings.client_id, r)), await R.generateDPoPProof({
       url: await this.metadataService.getTokenEndpoint(!1),
       httpMethod: "POST",
       keyPair: r.keys,
@@ -1860,23 +1860,23 @@ var _t = Le, pt = "openid", he = class {
       silentRequestTimeoutInSeconds: g,
       automaticSilentRenew: h = !0,
       validateSubOnSilentRenew: m = !0,
-      includeIdTokenInSilentRenew: U = !1,
-      monitorSession: P = !1,
+      includeIdTokenInSilentRenew: C = !1,
+      monitorSession: T = !1,
       monitorAnonymousSession: p = !1,
       checkSessionIntervalInSeconds: S = Et,
       query_status_response_type: y = "code",
-      stopCheckSessionOnError: x = !0,
+      stopCheckSessionOnError: P = !0,
       revokeTokenTypes: I = ["access_token", "refresh_token"],
-      revokeTokensOnSignout: A = !1,
+      revokeTokensOnSignout: U = !1,
       includeIdTokenInSilentSignout: v = !1,
-      accessTokenExpiringNotificationTimeInSeconds: N = kt,
-      userStore: C
+      accessTokenExpiringNotificationTimeInSeconds: O = kt,
+      userStore: x
     } = e;
-    if (super(e), this.popup_redirect_uri = t, this.popup_post_logout_redirect_uri = s, this.popupWindowFeatures = r, this.popupWindowTarget = i, this.redirectMethod = o, this.redirectTarget = n, this.iframeNotifyParentOrigin = d, this.iframeScriptOrigin = l, this.silent_redirect_uri = u, this.silentRequestTimeoutInSeconds = g || a || Be, this.automaticSilentRenew = h, this.validateSubOnSilentRenew = m, this.includeIdTokenInSilentRenew = U, this.monitorSession = P, this.monitorAnonymousSession = p, this.checkSessionIntervalInSeconds = S, this.stopCheckSessionOnError = x, this.query_status_response_type = y, this.revokeTokenTypes = I, this.revokeTokensOnSignout = A, this.includeIdTokenInSilentSignout = v, this.accessTokenExpiringNotificationTimeInSeconds = N, C)
-      this.userStore = C;
+    if (super(e), this.popup_redirect_uri = t, this.popup_post_logout_redirect_uri = s, this.popupWindowFeatures = r, this.popupWindowTarget = i, this.redirectMethod = o, this.redirectTarget = n, this.iframeNotifyParentOrigin = d, this.iframeScriptOrigin = l, this.silent_redirect_uri = u, this.silentRequestTimeoutInSeconds = g || a || Be, this.automaticSilentRenew = h, this.validateSubOnSilentRenew = m, this.includeIdTokenInSilentRenew = C, this.monitorSession = T, this.monitorAnonymousSession = p, this.checkSessionIntervalInSeconds = S, this.stopCheckSessionOnError = P, this.query_status_response_type = y, this.revokeTokenTypes = I, this.revokeTokensOnSignout = U, this.includeIdTokenInSilentSignout = v, this.accessTokenExpiringNotificationTimeInSeconds = O, x)
+      this.userStore = x;
     else {
-      const R = typeof window < "u" ? window.sessionStorage : new qe();
-      this.userStore = new Me({ store: R });
+      const E = typeof window < "u" ? window.sessionStorage : new qe();
+      this.userStore = new Me({ store: E });
     }
   }
 }, Ue = class Ve extends Fe {
@@ -1917,15 +1917,15 @@ var _t = Le, pt = "openid", he = class {
   async callback(e) {
     this._logger.create("callback"), Ue.notifyParent(e, this._settings.iframeNotifyParentOrigin);
   }
-}, Pt = 500, xt = 1e3, Ae = class extends Fe {
+}, Pt = 500, It = 1e3, Ae = class extends Fe {
   constructor({
     popupWindowTarget: e = ze,
     popupWindowFeatures: t = {},
     popupSignal: s
   }) {
     super(), this._logger = new f("PopupWindow");
-    const r = Ie.center({ ...Ke, ...t });
-    this._window = window.open(void 0, e, Ie.serialize(r)), s && s.addEventListener("abort", () => {
+    const r = xe.center({ ...Ke, ...t });
+    this._window = window.open(void 0, e, xe.serialize(r)), s && s.addEventListener("abort", () => {
       var i;
       this._abort.raise(new Error((i = s.reason) != null ? i : "Popup aborted"));
     }), t.closePopupWindowAfterInSeconds && t.closePopupWindowAfterInSeconds > 0 && setTimeout(() => {
@@ -1934,7 +1934,7 @@ var _t = Le, pt = "openid", he = class {
         return;
       }
       this.close();
-    }, t.closePopupWindowAfterInSeconds * xt);
+    }, t.closePopupWindowAfterInSeconds * It);
   }
   async navigate(e) {
     var t;
@@ -1950,7 +1950,7 @@ var _t = Le, pt = "openid", he = class {
   static notifyOpener(e, t) {
     super._notifyParent(window.opener, e, t), !t && !window.opener && window.close();
   }
-}, It = class {
+}, xt = class {
   constructor(e) {
     this._settings = e, this._logger = new f("PopupNavigator");
   }
@@ -2137,7 +2137,7 @@ var _t = Le, pt = "openid", he = class {
   }
 }, Nt = class {
   constructor(e, t, s, r) {
-    this._logger = new f("UserManager"), this.settings = new Rt(e), this._client = new yt(e), this._redirectNavigator = t ?? new Ct(this.settings), this._popupNavigator = s ?? new It(this.settings), this._iframeNavigator = r ?? new Tt(this.settings), this._events = new Ut(this.settings), this._silentRenewService = new At(this), this.settings.automaticSilentRenew && this.startSilentRenew(), this._sessionMonitor = null, this.settings.monitorSession && (this._sessionMonitor = new bt(this));
+    this._logger = new f("UserManager"), this.settings = new Rt(e), this._client = new yt(e), this._redirectNavigator = t ?? new Ct(this.settings), this._popupNavigator = s ?? new xt(this.settings), this._iframeNavigator = r ?? new Tt(this.settings), this._events = new Ut(this.settings), this._silentRenewService = new At(this), this.settings.automaticSilentRenew && this.startSilentRenew(), this._sessionMonitor = null, this.settings.monitorSession && (this._sessionMonitor = new bt(this));
   }
   /**
    * Get object used to register for events raised by the `UserManager`.
@@ -2634,7 +2634,7 @@ var _t = Le, pt = "openid", he = class {
     var i, o;
     const n = await ((o = (i = this.settings.dpop) == null ? void 0 : i.store) == null ? void 0 : o.get(this.settings.client_id));
     if (n)
-      return await T.generateDPoPProof({
+      return await R.generateDPoPProof({
         url: e,
         accessToken: t?.access_token,
         httpMethod: s,
@@ -2645,12 +2645,12 @@ var _t = Le, pt = "openid", he = class {
   async generateDPoPJkt(e) {
     let t = await e.store.get(this.settings.client_id);
     if (!t) {
-      const s = await T.generateDPoPKeys();
+      const s = await R.generateDPoPKeys();
       t = new We(s), await e.store.set(this.settings.client_id, t);
     }
-    return await T.generateDPoPJkt(t.keys);
+    return await R.generateDPoPJkt(t.keys);
   }
-}, Ee = O.createContext(void 0);
+}, Ee = A.createContext(void 0);
 Ee.displayName = "AuthContext";
 var jt = {
   isLoading: !0,
@@ -2762,7 +2762,7 @@ var Ht = [
     onRemoveUser: n,
     userManager: d = null,
     ...l
-  } = e, [a] = O.useState(() => d ?? (Ne ? new Ne(l) : { settings: l })), [u, g] = O.useReducer(qt, jt), h = O.useMemo(
+  } = e, [a] = A.useState(() => d ?? (Ne ? new Ne(l) : { settings: l })), [u, g] = A.useReducer(qt, jt), h = A.useMemo(
     () => Object.assign(
       {
         settings: a.settings,
@@ -2804,8 +2804,8 @@ var Ht = [
       )
     ),
     [a]
-  ), m = O.useRef(!1);
-  O.useEffect(() => {
+  ), m = A.useRef(!1);
+  A.useEffect(() => {
     !a || m.current || (m.current = !0, (async () => {
       try {
         let p = null;
@@ -2828,7 +2828,7 @@ var Ht = [
         });
       }
     })());
-  }, [a, r, s, o, i]), O.useEffect(() => {
+  }, [a, r, s, o, i]), A.useEffect(() => {
     if (!a) return;
     const p = (I) => {
       g({ type: "USER_LOADED", user: I });
@@ -2842,26 +2842,26 @@ var Ht = [
       g({ type: "USER_SIGNED_OUT" });
     };
     a.events.addUserSignedOut(y);
-    const x = (I) => {
+    const P = (I) => {
       g({
         type: "ERROR",
         error: Lt(I)
       });
     };
-    return a.events.addSilentRenewError(x), () => {
-      a.events.removeUserLoaded(p), a.events.removeUserUnloaded(S), a.events.removeUserSignedOut(y), a.events.removeSilentRenewError(x);
+    return a.events.addSilentRenewError(P), () => {
+      a.events.removeUserLoaded(p), a.events.removeUserUnloaded(S), a.events.removeUserSignedOut(y), a.events.removeSilentRenewError(P);
     };
   }, [a]);
-  const U = O.useCallback(async () => {
+  const C = A.useCallback(async () => {
     await a.removeUser(), n && await n();
-  }, [a, n]), P = O.useMemo(() => ({
+  }, [a, n]), T = A.useMemo(() => ({
     ...u,
     ...h,
-    removeUser: U
-  }), [u, h, U]);
-  return /* @__PURE__ */ O.createElement(Ee.Provider, { value: P }, t);
+    removeUser: C
+  }), [u, h, C]);
+  return /* @__PURE__ */ A.createElement(Ee.Provider, { value: T }, t);
 }, Ft = () => {
-  const e = O.useContext(Ee);
+  const e = A.useContext(Ee);
   return e || console.warn("AuthProvider context is undefined, please verify you are calling useAuth() as child of a <AuthProvider> component."), e;
 };
 const Kt = {
@@ -2885,57 +2885,24 @@ function Vt(e, t) {
     s
   )}`;
 }
-const zt = () => {
-  const e = Ft(), t = e.user?.profile, s = () => {
-    e.removeUser();
-  }, r = async () => {
-    const i = await fetch("/api/userinfo", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${e.user?.access_token}`
-      }
-    });
-    console.log(i);
+const zt = ({ children: e }) => {
+  const t = Ft(), s = t.user?.profile, r = () => {
+    t.removeUser();
   };
-  return e.isLoading ? /* @__PURE__ */ b.jsx("div", { children: "Loading..." }) : e.error ? /* @__PURE__ */ b.jsxs("div", { children: [
+  return t.isLoading ? /* @__PURE__ */ M.jsx("div", { children: "Loading..." }) : t.error ? /* @__PURE__ */ M.jsxs("div", { children: [
     "Encountering error... ",
-    e.error.message
-  ] }) : e.isAuthenticated ? t?.["cognito:groups"]?.includes("Sample-Client") ? /* @__PURE__ */ b.jsxs("div", { children: [
-    /* @__PURE__ */ b.jsxs("pre", { children: [
-      "Hello: ",
-      t?.family_name,
-      " ",
-      t?.given_name,
-      " ",
-      t?.email
-    ] }),
-    /* @__PURE__ */ b.jsxs("pre", { children: [
-      " ID Token: ",
-      e.user?.id_token,
-      " "
-    ] }),
-    /* @__PURE__ */ b.jsxs("pre", { children: [
-      " Access Token: ",
-      e.user?.access_token,
-      " "
-    ] }),
-    /* @__PURE__ */ b.jsxs("pre", { children: [
-      " Refresh Token: ",
-      e.user?.refresh_token,
-      " "
-    ] }),
-    /* @__PURE__ */ b.jsx("button", { onClick: r, children: "test request" }),
-    /* @__PURE__ */ b.jsx("button", { onClick: () => e.removeUser(), children: "Sign out" })
-  ] }) : /* @__PURE__ */ b.jsxs("div", { children: [
-    /* @__PURE__ */ b.jsx("p", { children: "No project permission" }),
-    /* @__PURE__ */ b.jsx("button", { onClick: () => e.removeUser(), children: "Sign out" })
-  ] }) : /* @__PURE__ */ b.jsxs("div", { children: [
-    /* @__PURE__ */ b.jsx("button", { onClick: () => e.signinRedirect(), children: "Sign in" }),
-    /* @__PURE__ */ b.jsx("button", { onClick: s, children: "Sign out" })
+    t.error.message
+  ] }) : t.isAuthenticated ? s?.["cognito:groups"]?.includes("Sample-Client") ? e : /* @__PURE__ */ M.jsxs("div", { children: [
+    /* @__PURE__ */ M.jsx("p", { children: "No project permission" }),
+    /* @__PURE__ */ M.jsx("button", { onClick: () => t.removeUser(), children: "Sign out" })
+  ] }) : /* @__PURE__ */ M.jsxs("div", { children: [
+    /* @__PURE__ */ M.jsx("button", { onClick: () => t.signinRedirect(), children: "Sign in" }),
+    /* @__PURE__ */ M.jsx("button", { onClick: r, children: "Sign out" })
   ] });
 }, Yt = ({
-  ...e
-}) => /* @__PURE__ */ b.jsx(Jt, { ...Kt, ...e, children: /* @__PURE__ */ b.jsx(zt, {}) });
+  children: e,
+  ...t
+}) => /* @__PURE__ */ M.jsx(Jt, { ...Kt, ...t, children: /* @__PURE__ */ M.jsx(zt, { children: e }) });
 export {
   Yt as AiResearchIdpProvider,
   Vt as signOutRedirect
