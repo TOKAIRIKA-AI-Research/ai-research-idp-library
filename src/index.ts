@@ -1,3 +1,3 @@
 export { AiResearchIdpProvider } from "./AiResearchIdpProvider";
 export { Login } from "./Login";
-export { signOutRedirect } from "./utils";
+export { signOutRedirect, type Profile } from "./utils";
