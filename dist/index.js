@@ -2907,6 +2907,5 @@ const Gt = () => {
 export {
   Zt as AiResearchIdpProvider,
   Gt as Login,
-  Yt as authConfig,
   Bt as signOutRedirect
 };
