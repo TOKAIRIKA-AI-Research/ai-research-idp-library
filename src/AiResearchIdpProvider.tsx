@@ -41,9 +41,10 @@ interface Props {
 export const AiResearchIdpProvider: FC<PropsWithChildren<Props>> = ({
   children,
   Login,
+  ...props
 }) => {
   return (
-    <AuthProvider {...authConfig}>
+    <AuthProvider {...{ ...authConfig, ...props }}>
       <CheckLogin Login={Login}>{children}</CheckLogin>
     </AuthProvider>
   );
