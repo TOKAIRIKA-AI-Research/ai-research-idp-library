@@ -5,8 +5,8 @@ import type { AuthProviderProps } from "react-oidc-context";
 export type Profile = IdTokenClaims & CognitoIdTokenPayload
 
 export const authConfig: AuthProviderProps = {
-  // authority,
-  // client_id: clientId,
+  authority: "https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_Rjm3JZLVe",
+  client_id: "1kqvas11ce10tiefm1qvlp03tq",
   redirect_uri: window.location.origin,
   response_type: "code",
   scope: [
