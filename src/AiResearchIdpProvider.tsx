@@ -2,7 +2,10 @@ import type { FC, PropsWithChildren } from "react";
 import { useAuth, AuthProvider } from "react-oidc-context";
 import { authConfig, type Profile } from "./utils";
 
-const CheckLogin: FC<PropsWithChildren<{ Login: FC }>> = ({ children, Login }) => {
+const CheckLogin: FC<PropsWithChildren<{ Login: FC }>> = ({
+  children,
+  Login,
+}) => {
   const auth = useAuth();
   const profile = auth.user?.profile as Profile | undefined;
 
@@ -16,33 +19,33 @@ const CheckLogin: FC<PropsWithChildren<{ Login: FC }>> = ({ children, Login }) =
 
   if (auth.isAuthenticated) {
     if (!profile?.["cognito:groups"]?.includes("Sample-Client")) {
-      return <div>
-        <p>No project permission</p>
-        <button onClick={() => auth.removeUser()}>Sign out</button>
-      </div>;
+      return (
+        <div>
+          <p>No project permission</p>
+          <button onClick={() => auth.removeUser()}>Sign out</button>
+        </div>
+      );
     }
 
-    return children; 
+    return children;
   }
-  
-  return (
-    <Login />
-  );
-}
 
-interface Props{
+  return <Login />;
+};
+
+interface Props {
   authority: string;
   clientId: string;
   Login: FC;
 }
-export const AiResearchIdpProvider: FC<PropsWithChildren<Props>> = ({ children, Login, ...props }) => {
-  console.log({...authConfig, ...props})
-
+export const AiResearchIdpProvider: FC<PropsWithChildren<Props>> = ({
+  children,
+  Login,
+  ...props
+}) => {
   return (
-    <AuthProvider {...{...authConfig, ...props}}>
-      <CheckLogin Login={Login}>
-      {children}
-      </CheckLogin>
+    <AuthProvider {...{ ...authConfig, ...props }}>
+      <CheckLogin Login={Login}>{children}</CheckLogin>
     </AuthProvider>
-  )
-}
+  );
+};
