@@ -2,10 +2,9 @@ import type { FC, PropsWithChildren } from "react";
 import { authConfig, type Profile } from "./utils";
 import { AuthProvider, useAuth } from "react-oidc-context";
 
-const CheckLogin: FC<PropsWithChildren<{ Login: FC }>> = ({
-  children,
-  Login,
-}) => {
+const CheckLogin: FC<
+  PropsWithChildren<{ Login: FC; cognitoGroupName?: string }>
+> = ({ children, Login, cognitoGroupName }) => {
   const auth = useAuth();
   const profile = auth.user?.profile as Profile | undefined;
 
@@ -18,7 +17,10 @@ const CheckLogin: FC<PropsWithChildren<{ Login: FC }>> = ({
   }
 
   if (auth.isAuthenticated) {
-    if (!profile?.["cognito:groups"]?.includes("Sample-Client")) {
+    if (
+      cognitoGroupName !== undefined &&
+      !profile?.["cognito:groups"]?.includes(cognitoGroupName)
+    ) {
       return (
         <div>
           <p>No project permission</p>
@@ -34,18 +36,22 @@ const CheckLogin: FC<PropsWithChildren<{ Login: FC }>> = ({
 };
 
 interface Props {
+  Login: FC;
+  cognitoGroupName?: string;
   authority: string;
   client_id: string;
-  Login: FC;
 }
 export const AiResearchIdpProvider: FC<PropsWithChildren<Props>> = ({
   children,
   Login,
+  cognitoGroupName,
   ...props
 }) => {
   return (
     <AuthProvider {...{ ...authConfig, ...props }}>
-      <CheckLogin Login={Login}>{children}</CheckLogin>
+      <CheckLogin Login={Login} cognitoGroupName={cognitoGroupName}>
+        {children}
+      </CheckLogin>
     </AuthProvider>
   );
 };

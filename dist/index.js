@@ -2885,23 +2885,21 @@ var Wt = [
   const e = A.useContext(Ee);
   return e || console.warn("AuthProvider context is undefined, please verify you are calling useAuth() as child of a <AuthProvider> component."), e;
 };
-const zt = ({
-  children: e,
-  Login: t
-}) => {
-  const s = Kt(), r = s.user?.profile;
-  return s.isLoading ? /* @__PURE__ */ H.jsx("div", { children: "Loading..." }) : s.error ? /* @__PURE__ */ H.jsxs("div", { children: [
+const zt = ({ children: e, Login: t, cognitoGroupName: s }) => {
+  const r = Kt(), i = r.user?.profile;
+  return r.isLoading ? /* @__PURE__ */ H.jsx("div", { children: "Loading..." }) : r.error ? /* @__PURE__ */ H.jsxs("div", { children: [
     "Encountering error... ",
-    s.error.message
-  ] }) : s.isAuthenticated ? r?.["cognito:groups"]?.includes("Sample-Client") ? e : /* @__PURE__ */ H.jsxs("div", { children: [
+    r.error.message
+  ] }) : r.isAuthenticated ? s !== void 0 && !i?.["cognito:groups"]?.includes(s) ? /* @__PURE__ */ H.jsxs("div", { children: [
     /* @__PURE__ */ H.jsx("p", { children: "No project permission" }),
-    /* @__PURE__ */ H.jsx("button", { onClick: () => s.removeUser(), children: "Sign out" })
-  ] }) : /* @__PURE__ */ H.jsx(t, {});
+    /* @__PURE__ */ H.jsx("button", { onClick: () => r.removeUser(), children: "Sign out" })
+  ] }) : e : /* @__PURE__ */ H.jsx(t, {});
 }, Yt = ({
   children: e,
   Login: t,
-  ...s
-}) => /* @__PURE__ */ H.jsx(Ft, { ...et, ...s, children: /* @__PURE__ */ H.jsx(zt, { Login: t, children: e }) });
+  cognitoGroupName: s,
+  ...r
+}) => /* @__PURE__ */ H.jsx(Ft, { ...et, ...r, children: /* @__PURE__ */ H.jsx(zt, { Login: t, cognitoGroupName: s, children: e }) });
 export {
   Yt as AiResearchIdpProvider,
   Vt as signOutRedirect,

@@ -1,8 +1,9 @@
 import type { FC, PropsWithChildren } from "react";
 interface Props {
+    Login: FC;
+    cognitoGroupName?: string;
     authority: string;
     client_id: string;
-    Login: FC;
 }
 export declare const AiResearchIdpProvider: FC<PropsWithChildren<Props>>;
 export {};
