@@ -2,13 +2,12 @@ import type { FC, PropsWithChildren } from "react";
 import { authConfig, type Profile } from "./utils";
 import { AuthProvider, useAuth } from "react-oidc-context";
 
-const CheckLogin: FC<PropsWithChildren> = ({ children }) => {
+const CheckLogin: FC<PropsWithChildren<{ Login: FC }>> = ({
+  children,
+  Login,
+}) => {
   const auth = useAuth();
   const profile = auth.user?.profile as Profile | undefined;
-
-  const handleSignOut = () => {
-    auth.removeUser();
-  };
 
   if (auth.isLoading) {
     return <div>Loading...</div>;
@@ -31,25 +30,22 @@ const CheckLogin: FC<PropsWithChildren> = ({ children }) => {
     return children;
   }
 
-  return (
-    <div>
-      <button onClick={() => auth.signinRedirect()}>Sign in</button>
-      <button onClick={handleSignOut}>Sign out</button>
-    </div>
-  );
+  return <Login />;
 };
 
 interface Props {
   authority: string;
   client_id: string;
+  Login: FC;
 }
 export const AiResearchIdpProvider: FC<PropsWithChildren<Props>> = ({
   children,
+  Login,
   ...props
 }) => {
   return (
     <AuthProvider {...{ ...authConfig, ...props }}>
-      <CheckLogin>{children}</CheckLogin>
+      <CheckLogin Login={Login}>{children}</CheckLogin>
     </AuthProvider>
   );
 };
