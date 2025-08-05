@@ -279,7 +279,7 @@ function ne() {
   return D || (D = 1, process.env.NODE_ENV === "production" ? T.exports = re() : T.exports = te()), T.exports;
 }
 var oe = ne();
-const se = () => /* @__PURE__ */ oe.jsx("button", { children: "Click Me" });
+const se = () => /* @__PURE__ */ oe.jsx("button", { children: "Click Me2" });
 export {
   se as MyButton
 };

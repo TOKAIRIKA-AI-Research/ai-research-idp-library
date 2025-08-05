@@ -67,3 +67,8 @@ export default tseslint.config([
   },
 ])
 ```
+
+
+# 参考
+
+https://zenn.dev/takanari_dev/articles/2024-02-22-npm-component-package
