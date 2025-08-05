@@ -2904,5 +2904,6 @@ const zt = ({
 }) => /* @__PURE__ */ H.jsx(Ft, { ...et, ...s, children: /* @__PURE__ */ H.jsx(zt, { Login: t, children: e }) });
 export {
   Yt as AiResearchIdpProvider,
-  Vt as signOutRedirect
+  Vt as signOutRedirect,
+  Kt as useAuth
 };
