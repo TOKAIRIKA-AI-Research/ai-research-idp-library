@@ -42,7 +42,6 @@ const CheckLogin: FC<PropsWithChildren> = ({ children }) => {
 interface Props {
   authority: string;
   client_id: string;
-  Login: FC;
 }
 export const AiResearchIdpProvider: FC<PropsWithChildren<Props>> = ({
   children,
