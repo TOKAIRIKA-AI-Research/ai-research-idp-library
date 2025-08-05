@@ -1,9 +1,8 @@
 import type { FC, PropsWithChildren } from "react";
 import { useAuth, AuthProvider } from "react-oidc-context";
 import { authConfig, type Profile } from "./utils";
-import { Login } from "./Login";
 
-const CheckLogin: FC<PropsWithChildren>  = ({ children }) => {
+const CheckLogin: FC<PropsWithChildren<{ Login: FC }>> = ({ children, Login }) => {
   const auth = useAuth();
   const profile = auth.user?.profile as Profile | undefined;
 
@@ -34,11 +33,12 @@ const CheckLogin: FC<PropsWithChildren>  = ({ children }) => {
 interface Props{
   authority: string;
   clientId: string;
+  Login: FC;
 }
-export const AiResearchIdpProvider: FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
+export const AiResearchIdpProvider: FC<PropsWithChildren<Props>> = ({ children, Login, ...props }) => {
   return (
     <AuthProvider {...{authConfig, ...props}}>
-      <CheckLogin>
+      <CheckLogin Login={Login}>
       {children}
       </CheckLogin>
     </AuthProvider>

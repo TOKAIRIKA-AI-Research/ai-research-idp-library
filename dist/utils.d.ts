@@ -3,5 +3,5 @@ import type { IdTokenClaims } from "oidc-client-ts";
 import type { AuthProviderProps } from "react-oidc-context";
 export type Profile = IdTokenClaims & CognitoIdTokenPayload;
 export declare const authConfig: AuthProviderProps;
-export declare function signOutRedirect(): void;
+export declare function signOutRedirect(cognitoDomain: string, clientId: string): void;
 //# sourceMappingURL=utils.d.ts.map
