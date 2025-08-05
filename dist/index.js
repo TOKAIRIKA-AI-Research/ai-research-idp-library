@@ -10,7 +10,7 @@ var ie = { exports: {} }, G = {};
  * LICENSE file in the root directory of this source tree.
  */
 var Te;
-function Qe() {
+function Xe() {
   if (Te) return G;
   Te = 1;
   var e = Symbol.for("react.transitional.element"), t = Symbol.for("react.fragment");
@@ -42,7 +42,7 @@ var X = {};
  * LICENSE file in the root directory of this source tree.
  */
 var Pe;
-function Ze() {
+function Qe() {
   return Pe || (Pe = 1, process.env.NODE_ENV !== "production" && function() {
     function e(c) {
       if (c == null) return null;
@@ -197,8 +197,8 @@ function Ze() {
         else g(k);
       if (Z.call(_, "key")) {
         k = e(c);
-        var z = Object.keys(_).filter(function(Xe) {
-          return Xe !== "key";
+        var z = Object.keys(_).filter(function(Ge) {
+          return Ge !== "key";
         });
         b = 0 < z.length ? "{key: someKey, " + z.join(": ..., ") + ": ...}" : "{key: someKey}", re[k + b] || (z = 0 < z.length ? "{" + z.join(": ..., ") + ": ...}" : "{}", console.error(
           `A props object containing a "key" prop is being spread into JSX:
@@ -275,20 +275,20 @@ React keys must be passed directly to JSX without using spread:
   }()), X;
 }
 var Ie;
-function et() {
-  return Ie || (Ie = 1, process.env.NODE_ENV === "production" ? ie.exports = Qe() : ie.exports = Ze()), ie.exports;
+function Ze() {
+  return Ie || (Ie = 1, process.env.NODE_ENV === "production" ? ie.exports = Xe() : ie.exports = Qe()), ie.exports;
 }
-var H = et();
+var H = Ze();
 class Q extends Error {
 }
 Q.prototype.name = "InvalidTokenError";
-function tt(e) {
+function et(e) {
   return decodeURIComponent(atob(e).replace(/(.)/g, (t, s) => {
     let r = s.charCodeAt(0).toString(16).toUpperCase();
     return r.length < 2 && (r = "0" + r), "%" + r;
   }));
 }
-function st(e) {
+function tt(e) {
   let t = e.replace(/-/g, "+").replace(/_/g, "/");
   switch (t.length % 4) {
     case 0:
@@ -303,12 +303,12 @@ function st(e) {
       throw new Error("base64 string is not of the correct length");
   }
   try {
-    return tt(t);
+    return et(t);
   } catch {
     return atob(t);
   }
 }
-function rt(e, t) {
+function st(e, t) {
   if (typeof e != "string")
     throw new Q("Invalid token specified: must be a string");
   t || (t = {});
@@ -317,7 +317,7 @@ function rt(e, t) {
     throw new Q(`Invalid token specified: missing part #${s + 1}`);
   let i;
   try {
-    i = st(r);
+    i = tt(r);
   } catch (o) {
     throw new Q(`Invalid token specified: invalid base64 for part #${s + 1} (${o.message})`);
   }
@@ -327,7 +327,7 @@ function rt(e, t) {
     throw new Q(`Invalid token specified: invalid json for part #${s + 1} (${o.message})`);
   }
 }
-var it = {
+var rt = {
   debug: () => {
   },
   info: () => {
@@ -339,7 +339,7 @@ var it = {
 }, M, D, oe = /* @__PURE__ */ ((e) => (e[e.NONE = 0] = "NONE", e[e.ERROR = 1] = "ERROR", e[e.WARN = 2] = "WARN", e[e.INFO = 3] = "INFO", e[e.DEBUG = 4] = "DEBUG", e))(oe || {});
 ((e) => {
   function t() {
-    M = 3, D = it;
+    M = 3, D = rt;
   }
   e.reset = t;
   function s(i) {
@@ -407,7 +407,7 @@ var ae = class {
   // IMPORTANT: doesn't validate the token
   static decode(e) {
     try {
-      return rt(e);
+      return st(e);
     } catch (t) {
       throw f.error("JwtUtils.decode", t), t;
     }
@@ -423,7 +423,7 @@ var ae = class {
     ), d = R.encodeBase64Url(new Uint8Array(n));
     return `${o}.${d}`;
   }
-}, nt = "10000000-1000-4000-8000-100000000000", fe = (e) => btoa([...new Uint8Array(e)].map((t) => String.fromCharCode(t)).join("")), qe = class q {
+}, it = "10000000-1000-4000-8000-100000000000", fe = (e) => btoa([...new Uint8Array(e)].map((t) => String.fromCharCode(t)).join("")), je = class q {
   static _randomWord() {
     const t = new Uint32Array(1);
     return crypto.getRandomValues(t), t[0];
@@ -432,7 +432,7 @@ var ae = class {
    * Generates RFC4122 version 4 guid
    */
   static generateUUIDv4() {
-    return nt.replace(
+    return it.replace(
       /[018]/g,
       (s) => (+s ^ q._randomWord() & 15 >> +s / 4).toString(16)
     ).replace(/-/g, "");
@@ -563,8 +563,8 @@ var ae = class {
     );
   }
 };
-qe.encodeBase64Url = (e) => fe(e).replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
-var R = qe, W = class {
+je.encodeBase64Url = (e) => fe(e).replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
+var R = je, W = class {
   constructor(e) {
     this._name = e, this._callbacks = [], this._logger = new f(`Event('${this._name}')`);
   }
@@ -639,7 +639,7 @@ var R = qe, W = class {
   constructor(e) {
     super(e), this.name = "ErrorTimeout";
   }
-}, ot = class {
+}, nt = class {
   constructor(e) {
     this._logger = new f("AccessTokenEvents"), this._expiringTimer = new $("Access token expiring"), this._expiredTimer = new $("Access token expired"), this._expiringNotificationTimeInSeconds = e.expiringNotificationTimeInSeconds;
   }
@@ -684,7 +684,7 @@ var R = qe, W = class {
   removeAccessTokenExpired(e) {
     this._expiredTimer.removeHandler(e);
   }
-}, at = class {
+}, ot = class {
   constructor(e, t, s, r, i) {
     this._callback = e, this._client_id = t, this._intervalInSeconds = r, this._stopOnError = i, this._logger = new f("CheckSessionIFrame"), this._timer = null, this._session_state = null, this._message = (n) => {
       n.origin === this._frame_origin && n.source === this._frame.contentWindow && (n.data === "error" ? (this._logger.error("error message from check session op iframe"), this._stopOnError && this.stop()) : n.data === "changed" ? (this._logger.debug("changed message from check session op iframe"), this.stop(), this._callback()) : this._logger.debug(n.data + " message from check session op iframe"));
@@ -711,7 +711,7 @@ var R = qe, W = class {
   stop() {
     this._logger.create("stop"), this._session_state = null, this._timer && (clearInterval(this._timer), this._timer = null);
   }
-}, Me = class {
+}, qe = class {
   constructor() {
     this._logger = new f("InMemoryWebStorage"), this._data = {};
   }
@@ -846,7 +846,7 @@ var R = qe, W = class {
       n && n !== "" && (e[o] = n);
     });
   }
-}, ct = class {
+}, at = class {
   constructor(e) {
     this._settings = e, this._logger = new f("MetadataService"), this._signingKeys = null, this._metadata = null, this._metadataUrl = this._settings.metadataUrl, this._jsonService = new ke(
       ["application/jwk-set+json"],
@@ -913,7 +913,7 @@ var R = qe, W = class {
       throw e.throw(new Error("Missing keys on keyset")), null;
     return this._signingKeys = s.keys, this._signingKeys;
   }
-}, De = class {
+}, Me = class {
   constructor({
     prefix: e = "oidc.",
     store: t = localStorage
@@ -940,7 +940,7 @@ var R = qe, W = class {
     }
     return t;
   }
-}, lt = "code", dt = "openid", ut = "client_secret_post", gt = 900, ve = class {
+}, ct = "code", lt = "openid", dt = "client_secret_post", ut = 900, ve = class {
   constructor({
     // metadata related
     authority: e,
@@ -951,11 +951,11 @@ var R = qe, W = class {
     // client related
     client_id: o,
     client_secret: n,
-    response_type: d = lt,
-    scope: l = dt,
+    response_type: d = ct,
+    scope: l = lt,
     redirect_uri: a,
     post_logout_redirect_uri: u,
-    client_authentication: g = ut,
+    client_authentication: g = dt,
     // optional protocol
     prompt: h,
     display: m,
@@ -968,7 +968,7 @@ var R = qe, W = class {
     filterProtocolClaims: P = !0,
     loadUserInfo: I = !1,
     requestTimeoutInSeconds: U,
-    staleStateAgeInSeconds: v = gt,
+    staleStateAgeInSeconds: v = ut,
     mergeClaimsStrategy: O = { array: "replace" },
     disablePKCE: x = !1,
     // other behavior
@@ -987,13 +987,13 @@ var R = qe, W = class {
     if (this.authority = e, t ? this.metadataUrl = t : (this.metadataUrl = e, e && (this.metadataUrl.endsWith("/") || (this.metadataUrl += "/"), this.metadataUrl += ".well-known/openid-configuration")), this.metadata = s, this.metadataSeed = i, this.signingKeys = r, this.client_id = o, this.client_secret = n, this.response_type = d, this.scope = l, this.redirect_uri = a, this.post_logout_redirect_uri = u, this.client_authentication = g, this.prompt = h, this.display = m, this.max_age = C, this.ui_locales = T, this.acr_values = p, this.resource = S, this.response_mode = y, this.filterProtocolClaims = P ?? !0, this.loadUserInfo = !!I, this.staleStateAgeInSeconds = v, this.mergeClaimsStrategy = O, this.omitScopeWhenRequesting = se, this.disablePKCE = !!x, this.revokeTokenAdditionalContentTypes = F, this.fetchRequestCredentials = K || "same-origin", this.requestTimeoutInSeconds = U, E)
       this.stateStore = E;
     else {
-      const re = typeof window < "u" ? window.localStorage : new Me();
-      this.stateStore = new De({ store: re });
+      const re = typeof window < "u" ? window.localStorage : new qe();
+      this.stateStore = new Me({ store: re });
     }
     if (this.refreshTokenAllowedScope = Z, this.extraQueryParams = le, this.extraTokenParams = V, this.extraHeaders = ee, this.dpop = te, this.dpop && !((Y = this.dpop) != null && Y.store))
       throw new Error("A DPoPStore is required when dpop is enabled");
   }
-}, ht = class {
+}, gt = class {
   constructor(e, t) {
     this._settings = e, this._metadataService = t, this._logger = new f("UserInfoService"), this._getClaimsFromJwt = async (s) => {
       const r = this._logger.create("_getClaimsFromJwt");
@@ -1021,7 +1021,7 @@ var R = qe, W = class {
     });
     return t.debug("got claims", r), r;
   }
-}, $e = class {
+}, De = class {
   constructor(e, t) {
     this._settings = e, this._metadataService = t, this._logger = new f("TokenClient"), this._jsonService = new ke(
       this._settings.revokeTokenAdditionalContentTypes,
@@ -1153,9 +1153,9 @@ var R = qe, W = class {
       n != null && i.set(o, n);
     i.set("client_id", this._settings.client_id), this._settings.client_secret && i.set("client_secret", this._settings.client_secret), await this._jsonService.postForm(r, { body: i, timeoutInSeconds: this._settings.requestTimeoutInSeconds }), s.debug("got response");
   }
-}, _t = class {
+}, ht = class {
   constructor(e, t, s) {
-    this._settings = e, this._metadataService = t, this._claimsService = s, this._logger = new f("ResponseValidator"), this._userInfoService = new ht(this._settings, this._metadataService), this._tokenClient = new $e(this._settings, this._metadataService);
+    this._settings = e, this._metadataService = t, this._claimsService = s, this._logger = new f("ResponseValidator"), this._userInfoService = new gt(this._settings, this._metadataService), this._tokenClient = new De(this._settings, this._metadataService);
   }
   async validateSigninResponse(e, t, s) {
     const r = this._logger.create("validateSigninResponse");
@@ -1256,7 +1256,7 @@ var R = qe, W = class {
       a && (r.debug("removed item for key:", d), t.remove(d));
     }
   }
-}, Le = class ye extends ce {
+}, $e = class ye extends ce {
   constructor(t) {
     super(t), this.code_verifier = t.code_verifier, this.code_challenge = t.code_challenge, this.authority = t.authority, this.client_id = t.client_id, this.redirect_uri = t.redirect_uri, this.scope = t.scope, this.client_secret = t.client_secret, this.extraTokenParams = t.extraTokenParams, this.response_mode = t.response_mode, this.skipUserInfo = t.skipUserInfo;
   }
@@ -1291,7 +1291,7 @@ var R = qe, W = class {
     const s = JSON.parse(t);
     return ye.create(s);
   }
-}, He = class We {
+}, Le = class He {
   constructor(t) {
     this.url = t.url, this.state = t.state;
   }
@@ -1331,7 +1331,7 @@ var R = qe, W = class {
       throw this._logger.error("create: No scope passed"), new Error("scope");
     if (!s)
       throw this._logger.error("create: No authority passed"), new Error("authority");
-    const U = await Le.create({
+    const U = await $e.create({
       data: d,
       request_type: a,
       url_state: h,
@@ -1350,14 +1350,14 @@ var R = qe, W = class {
     h && (O = `${O}${B}${h}`), v.searchParams.append("state", O), U.code_challenge && (v.searchParams.append("code_challenge", U.code_challenge), v.searchParams.append("code_challenge_method", "S256")), m && (Array.isArray(m) ? m : [m]).forEach((E) => v.searchParams.append("resource", E));
     for (const [x, E] of Object.entries({ response_mode: l, ...I, ...T }))
       E != null && v.searchParams.append(x, E.toString());
-    return new We({
+    return new He({
       url: v.href,
       state: U
     });
   }
 };
-He._logger = new f("SigninRequest");
-var pt = He, ft = "openid", he = class {
+Le._logger = new f("SigninRequest");
+var _t = Le, pt = "openid", he = class {
   constructor(e) {
     if (this.access_token = "", this.token_type = "", this.profile = {}, this.state = e.get("state"), this.session_state = e.get("session_state"), this.state) {
       const t = decodeURIComponent(this.state).split(B);
@@ -1374,9 +1374,9 @@ var pt = He, ft = "openid", he = class {
   }
   get isOpenId() {
     var e;
-    return ((e = this.scope) == null ? void 0 : e.split(" ").includes(ft)) || !!this.id_token;
+    return ((e = this.scope) == null ? void 0 : e.split(" ").includes(pt)) || !!this.id_token;
   }
-}, wt = class {
+}, ft = class {
   constructor({
     url: e,
     state_data: t,
@@ -1399,7 +1399,7 @@ var pt = He, ft = "openid", he = class {
       u != null && l.searchParams.append(a, u.toString());
     this.url = l.href;
   }
-}, mt = class {
+}, wt = class {
   constructor(e) {
     if (this.state = e.get("state"), this.state) {
       const t = decodeURIComponent(this.state).split(B);
@@ -1407,7 +1407,7 @@ var pt = He, ft = "openid", he = class {
     }
     this.error = e.get("error"), this.error_description = e.get("error_description"), this.error_uri = e.get("error_uri");
   }
-}, vt = [
+}, mt = [
   "nbf",
   "jti",
   "auth_time",
@@ -1417,7 +1417,7 @@ var pt = He, ft = "openid", he = class {
   "azp",
   "at_hash"
   // https://openid.net/specs/openid-connect-core-1_0.html#CodeIDToken
-], St = ["sub", "iss", "aud", "exp", "iat"], yt = class {
+], vt = ["sub", "iss", "aud", "exp", "iat"], St = class {
   constructor(e) {
     this._settings = e, this._logger = new f("ClaimsService");
   }
@@ -1425,9 +1425,9 @@ var pt = He, ft = "openid", he = class {
     const t = { ...e };
     if (this._settings.filterProtocolClaims) {
       let s;
-      Array.isArray(this._settings.filterProtocolClaims) ? s = this._settings.filterProtocolClaims : s = vt;
+      Array.isArray(this._settings.filterProtocolClaims) ? s = this._settings.filterProtocolClaims : s = mt;
       for (const r of s)
-        St.includes(r) || delete t[r];
+        vt.includes(r) || delete t[r];
     }
     return t;
   }
@@ -1447,13 +1447,13 @@ var pt = He, ft = "openid", he = class {
         else typeof s[r] == "object" && typeof i == "object" ? s[r] = this.mergeClaims(s[r], i) : s[r] = i;
     return s;
   }
-}, Je = class {
+}, We = class {
   constructor(e, t) {
     this.keys = e, this.nonce = t;
   }
-}, bt = class {
+}, yt = class {
   constructor(e, t) {
-    this._logger = new f("OidcClient"), this.settings = e instanceof ve ? e : new ve(e), this.metadataService = t ?? new ct(this.settings), this._claimsService = new yt(this.settings), this._validator = new _t(this.settings, this.metadataService, this._claimsService), this._tokenClient = new $e(this.settings, this.metadataService);
+    this._logger = new f("OidcClient"), this.settings = e instanceof ve ? e : new ve(e), this.metadataService = t ?? new at(this.settings), this._claimsService = new St(this.settings), this._validator = new ht(this.settings, this.metadataService, this._claimsService), this._tokenClient = new De(this.settings, this.metadataService);
   }
   async createSigninRequest({
     state: e,
@@ -1485,7 +1485,7 @@ var pt = He, ft = "openid", he = class {
       throw new Error("Only the Authorization Code flow (with PKCE) is supported");
     const x = await this.metadataService.getAuthorizationEndpoint();
     O.debug("Received authorization endpoint", x);
-    const E = await pt.create({
+    const E = await _t.create({
       url: x,
       authority: this.settings.authority,
       client_id: this.settings.client_id,
@@ -1526,7 +1526,7 @@ var pt = He, ft = "openid", he = class {
     const i = await this.settings.stateStore[t ? "remove" : "get"](r.state);
     if (!i)
       throw s.throw(new Error("No matching state found in storage")), null;
-    return { state: await Le.fromStorageString(i), response: r };
+    return { state: await $e.fromStorageString(i), response: r };
   }
   async processSigninResponse(e, t, s = !0) {
     const r = this._logger.create("processSigninResponse"), { state: i, response: o } = await this.readSigninResponseState(e, s);
@@ -1547,7 +1547,7 @@ var pt = He, ft = "openid", he = class {
   }
   async getDpopProof(e, t) {
     let s, r;
-    return (await e.getAllKeys()).includes(this.settings.client_id) ? (r = await e.get(this.settings.client_id), r.nonce !== t && t && (r.nonce = t, await e.set(this.settings.client_id, r))) : (s = await R.generateDPoPKeys(), r = new Je(s, t), await e.set(this.settings.client_id, r)), await R.generateDPoPProof({
+    return (await e.getAllKeys()).includes(this.settings.client_id) ? (r = await e.get(this.settings.client_id), r.nonce !== t && t && (r.nonce = t, await e.set(this.settings.client_id, r))) : (s = await R.generateDPoPKeys(), r = new We(s, t), await e.set(this.settings.client_id, r)), await R.generateDPoPProof({
       url: await this.metadataService.getTokenEndpoint(!1),
       httpMethod: "POST",
       keyPair: r.keys,
@@ -1632,7 +1632,7 @@ var pt = He, ft = "openid", he = class {
     if (!l)
       throw d.throw(new Error("No end session endpoint")), null;
     d.debug("Received end session endpoint", l), !s && o && !t && (s = this.settings.client_id);
-    const a = new wt({
+    const a = new ft({
       url: l,
       id_token_hint: t,
       client_id: s,
@@ -1647,7 +1647,7 @@ var pt = He, ft = "openid", he = class {
     return u && (d.debug("Signout request has state to persist"), await this.settings.stateStore.set(u.id, u.toStorageString())), a;
   }
   async readSignoutResponseState(e, t = !1) {
-    const s = this._logger.create("readSignoutResponseState"), r = new mt(we.readParams(e, this.settings.response_mode));
+    const s = this._logger.create("readSignoutResponseState"), r = new wt(we.readParams(e, this.settings.response_mode));
     if (!r.state) {
       if (s.debug("No state in response"), r.error)
         throw s.warn("Response was error:", r.error), new J(r);
@@ -1671,7 +1671,7 @@ var pt = He, ft = "openid", he = class {
       token_type_hint: t
     });
   }
-}, kt = class {
+}, bt = class {
   constructor(e) {
     this._userManager = e, this._logger = new f("SessionMonitor"), this._start = async (t) => {
       const s = t.session_state;
@@ -1686,7 +1686,7 @@ var pt = He, ft = "openid", he = class {
         const i = await this._userManager.metadataService.getCheckSessionIframe();
         if (i) {
           r.debug("initializing check session iframe");
-          const o = this._userManager.settings.client_id, n = this._userManager.settings.checkSessionIntervalInSeconds, d = this._userManager.settings.stopCheckSessionOnError, l = new at(this._callback, o, i, n, d);
+          const o = this._userManager.settings.client_id, n = this._userManager.settings.checkSessionIntervalInSeconds, d = this._userManager.settings.stopCheckSessionOnError, l = new ot(this._callback, o, i, n, d);
           await l.load(), this._checkSessionIFrame = l, l.start(s);
         } else
           r.warn("no check session iframe found in the metadata");
@@ -1745,7 +1745,7 @@ var pt = He, ft = "openid", he = class {
       }
     }
   }
-}, _e = class Fe {
+}, _e = class Je {
   constructor(t) {
     var s;
     this.id_token = t.id_token, this.session_state = (s = t.session_state) != null ? s : null, this.access_token = t.access_token, this.refresh_token = t.refresh_token, this.token_type = t.token_type, this.scope = t.scope, this.profile = t.profile, this.expires_at = t.expires_at, this.state = t.userState, this.url_state = t.url_state;
@@ -1782,9 +1782,9 @@ var pt = He, ft = "openid", he = class {
     });
   }
   static fromStorageString(t) {
-    return f.createStatic("User", "fromStorageString"), new Fe(JSON.parse(t));
+    return f.createStatic("User", "fromStorageString"), new Je(JSON.parse(t));
   }
-}, Ce = "oidc-client", Ke = class {
+}, Ce = "oidc-client", Fe = class {
   constructor() {
     this._abort = new W("Window navigation aborted"), this._disposeHandlers = /* @__PURE__ */ new Set(), this._window = null;
   }
@@ -1839,18 +1839,18 @@ var pt = He, ft = "openid", he = class {
       d.postMessage(i), d.close();
     }
   }
-}, ze = {
+}, Ke = {
   location: !1,
   toolbar: !1,
   height: 640,
   closePopupWindowAfterInSeconds: -1
-}, Be = "_blank", Et = 60, Rt = 2, Ve = 10, Tt = class extends ve {
+}, ze = "_blank", kt = 60, Et = 2, Be = 10, Rt = class extends ve {
   constructor(e) {
     const {
       popup_redirect_uri: t = e.redirect_uri,
       popup_post_logout_redirect_uri: s = e.post_logout_redirect_uri,
-      popupWindowFeatures: r = ze,
-      popupWindowTarget: i = Be,
+      popupWindowFeatures: r = Ke,
+      popupWindowTarget: i = ze,
       redirectMethod: o = "assign",
       redirectTarget: n = "self",
       iframeNotifyParentOrigin: d = e.iframeNotifyParentOrigin,
@@ -1863,27 +1863,27 @@ var pt = He, ft = "openid", he = class {
       includeIdTokenInSilentRenew: C = !1,
       monitorSession: T = !1,
       monitorAnonymousSession: p = !1,
-      checkSessionIntervalInSeconds: S = Rt,
+      checkSessionIntervalInSeconds: S = Et,
       query_status_response_type: y = "code",
       stopCheckSessionOnError: P = !0,
       revokeTokenTypes: I = ["access_token", "refresh_token"],
       revokeTokensOnSignout: U = !1,
       includeIdTokenInSilentSignout: v = !1,
-      accessTokenExpiringNotificationTimeInSeconds: O = Et,
+      accessTokenExpiringNotificationTimeInSeconds: O = kt,
       userStore: x
     } = e;
-    if (super(e), this.popup_redirect_uri = t, this.popup_post_logout_redirect_uri = s, this.popupWindowFeatures = r, this.popupWindowTarget = i, this.redirectMethod = o, this.redirectTarget = n, this.iframeNotifyParentOrigin = d, this.iframeScriptOrigin = l, this.silent_redirect_uri = u, this.silentRequestTimeoutInSeconds = g || a || Ve, this.automaticSilentRenew = h, this.validateSubOnSilentRenew = m, this.includeIdTokenInSilentRenew = C, this.monitorSession = T, this.monitorAnonymousSession = p, this.checkSessionIntervalInSeconds = S, this.stopCheckSessionOnError = P, this.query_status_response_type = y, this.revokeTokenTypes = I, this.revokeTokensOnSignout = U, this.includeIdTokenInSilentSignout = v, this.accessTokenExpiringNotificationTimeInSeconds = O, x)
+    if (super(e), this.popup_redirect_uri = t, this.popup_post_logout_redirect_uri = s, this.popupWindowFeatures = r, this.popupWindowTarget = i, this.redirectMethod = o, this.redirectTarget = n, this.iframeNotifyParentOrigin = d, this.iframeScriptOrigin = l, this.silent_redirect_uri = u, this.silentRequestTimeoutInSeconds = g || a || Be, this.automaticSilentRenew = h, this.validateSubOnSilentRenew = m, this.includeIdTokenInSilentRenew = C, this.monitorSession = T, this.monitorAnonymousSession = p, this.checkSessionIntervalInSeconds = S, this.stopCheckSessionOnError = P, this.query_status_response_type = y, this.revokeTokenTypes = I, this.revokeTokensOnSignout = U, this.includeIdTokenInSilentSignout = v, this.accessTokenExpiringNotificationTimeInSeconds = O, x)
       this.userStore = x;
     else {
-      const E = typeof window < "u" ? window.sessionStorage : new Me();
-      this.userStore = new De({ store: E });
+      const E = typeof window < "u" ? window.sessionStorage : new qe();
+      this.userStore = new Me({ store: E });
     }
   }
-}, Ue = class Ye extends Ke {
+}, Ue = class Ve extends Fe {
   constructor({
-    silentRequestTimeoutInSeconds: t = Ve
+    silentRequestTimeoutInSeconds: t = Be
   }) {
-    super(), this._logger = new f("IFrameWindow"), this._timeoutInSeconds = t, this._frame = Ye.createHiddenIframe(), this._window = this._frame.contentWindow;
+    super(), this._logger = new f("IFrameWindow"), this._timeoutInSeconds = t, this._frame = Ve.createHiddenIframe(), this._window = this._frame.contentWindow;
   }
   static createHiddenIframe() {
     const t = window.document.createElement("iframe");
@@ -1905,7 +1905,7 @@ var pt = He, ft = "openid", he = class {
   static notifyParent(t, s) {
     return super._notifyParent(window.parent, t, !1, s);
   }
-}, Pt = class {
+}, Tt = class {
   constructor(e) {
     this._settings = e, this._logger = new f("IFrameNavigator");
   }
@@ -1917,14 +1917,14 @@ var pt = He, ft = "openid", he = class {
   async callback(e) {
     this._logger.create("callback"), Ue.notifyParent(e, this._settings.iframeNotifyParentOrigin);
   }
-}, It = 500, xt = 1e3, Ae = class extends Ke {
+}, Pt = 500, It = 1e3, Ae = class extends Fe {
   constructor({
-    popupWindowTarget: e = Be,
+    popupWindowTarget: e = ze,
     popupWindowFeatures: t = {},
     popupSignal: s
   }) {
     super(), this._logger = new f("PopupWindow");
-    const r = xe.center({ ...ze, ...t });
+    const r = xe.center({ ...Ke, ...t });
     this._window = window.open(void 0, e, xe.serialize(r)), s && s.addEventListener("abort", () => {
       var i;
       this._abort.raise(new Error((i = s.reason) != null ? i : "Popup aborted"));
@@ -1934,14 +1934,14 @@ var pt = He, ft = "openid", he = class {
         return;
       }
       this.close();
-    }, t.closePopupWindowAfterInSeconds * xt);
+    }, t.closePopupWindowAfterInSeconds * It);
   }
   async navigate(e) {
     var t;
     (t = this._window) == null || t.focus();
     const s = setInterval(() => {
       (!this._window || this._window.closed) && (this._logger.debug("Popup closed by user or isolated by redirect"), r(), this._disposeHandlers.delete(r));
-    }, It), r = () => clearInterval(s);
+    }, Pt), r = () => clearInterval(s);
     return this._disposeHandlers.add(r), await super.navigate(e);
   }
   close() {
@@ -1950,7 +1950,7 @@ var pt = He, ft = "openid", he = class {
   static notifyOpener(e, t) {
     super._notifyParent(window.opener, e, t), !t && !window.opener && window.close();
   }
-}, Ct = class {
+}, xt = class {
   constructor(e) {
     this._settings = e, this._logger = new f("PopupNavigator");
   }
@@ -1964,7 +1964,7 @@ var pt = He, ft = "openid", he = class {
   async callback(e, { keepOpen: t = !1 }) {
     this._logger.create("callback"), Ae.notifyOpener(e, t);
   }
-}, Ut = class {
+}, Ct = class {
   constructor(e) {
     this._settings = e, this._logger = new f("RedirectNavigator");
   }
@@ -1993,7 +1993,7 @@ var pt = He, ft = "openid", he = class {
   }
   async callback() {
   }
-}, At = class extends ot {
+}, Ut = class extends nt {
   constructor(e) {
     super({ expiringNotificationTimeInSeconds: e.accessTokenExpiringNotificationTimeInSeconds }), this._logger = new f("UserManagerEvents"), this._userLoaded = new W("User loaded"), this._userUnloaded = new W("User unloaded"), this._silentRenewError = new W("Silent renew error"), this._userSignedIn = new W("User signed in"), this._userSignedOut = new W("User signed out"), this._userSessionChanged = new W("User session changed");
   }
@@ -2102,7 +2102,7 @@ var pt = He, ft = "openid", he = class {
   async _raiseUserSessionChanged() {
     await this._userSessionChanged.raise();
   }
-}, Ot = class {
+}, At = class {
   constructor(e) {
     this._userManager = e, this._logger = new f("SilentRenewService"), this._isStarted = !1, this._retryTimer = new $("Retry Silent Renew"), this._tokenExpiring = async () => {
       const t = this._logger.create("_tokenExpiring");
@@ -2131,13 +2131,13 @@ var pt = He, ft = "openid", he = class {
   stop() {
     this._isStarted && (this._retryTimer.cancel(), this._retryTimer.removeHandler(this._tokenExpiring), this._userManager.events.removeAccessTokenExpiring(this._tokenExpiring), this._isStarted = !1);
   }
-}, Nt = class {
+}, Ot = class {
   constructor(e) {
     this.refresh_token = e.refresh_token, this.id_token = e.id_token, this.session_state = e.session_state, this.scope = e.scope, this.profile = e.profile, this.data = e.state;
   }
-}, jt = class {
+}, Nt = class {
   constructor(e, t, s, r) {
-    this._logger = new f("UserManager"), this.settings = new Tt(e), this._client = new bt(e), this._redirectNavigator = t ?? new Ut(this.settings), this._popupNavigator = s ?? new Ct(this.settings), this._iframeNavigator = r ?? new Pt(this.settings), this._events = new At(this.settings), this._silentRenewService = new Ot(this), this.settings.automaticSilentRenew && this.startSilentRenew(), this._sessionMonitor = null, this.settings.monitorSession && (this._sessionMonitor = new kt(this));
+    this._logger = new f("UserManager"), this.settings = new Rt(e), this._client = new yt(e), this._redirectNavigator = t ?? new Ct(this.settings), this._popupNavigator = s ?? new xt(this.settings), this._iframeNavigator = r ?? new Tt(this.settings), this._events = new Ut(this.settings), this._silentRenewService = new At(this), this.settings.automaticSilentRenew && this.startSilentRenew(), this._sessionMonitor = null, this.settings.monitorSession && (this._sessionMonitor = new bt(this));
   }
   /**
    * Get object used to register for events raised by the `UserManager`.
@@ -2279,7 +2279,7 @@ var pt = He, ft = "openid", he = class {
     let n = await this._loadUser();
     if (n?.refresh_token) {
       r.debug("using refresh token");
-      const g = new Nt(n);
+      const g = new Ot(n);
       return await this._useRefreshToken({
         state: g,
         redirect_uri: o.redirect_uri,
@@ -2646,16 +2646,16 @@ var pt = He, ft = "openid", he = class {
     let t = await e.store.get(this.settings.client_id);
     if (!t) {
       const s = await R.generateDPoPKeys();
-      t = new Je(s), await e.store.set(this.settings.client_id, t);
+      t = new We(s), await e.store.set(this.settings.client_id, t);
     }
     return await R.generateDPoPJkt(t.keys);
   }
 }, Ee = A.createContext(void 0);
 Ee.displayName = "AuthContext";
-var qt = {
+var jt = {
   isLoading: !0,
   isAuthenticated: !1
-}, Mt = (e, t) => {
+}, qt = (e, t) => {
   switch (t.type) {
     case "INITIALISED":
     case "USER_LOADED":
@@ -2708,11 +2708,11 @@ var qt = {
       };
     }
   }
-}, Dt = (e = window.location) => {
+}, Mt = (e = window.location) => {
   let t = new URLSearchParams(e.search);
   return !!((t.get("code") || t.get("error")) && t.get("state") || (t = new URLSearchParams(e.hash.replace("#", "?")), (t.get("code") || t.get("error")) && t.get("state")));
-}, $t = Re("signinCallback", "Sign-in failed"), Lt = Re("signoutCallback", "Sign-out failed"), Ht = Re("renewSilent", "Renew silent failed");
-function Ge(e, t) {
+}, Dt = Re("signinCallback", "Sign-in failed"), $t = Re("signoutCallback", "Sign-out failed"), Lt = Re("renewSilent", "Renew silent failed");
+function Ye(e, t) {
   return {
     name: pe(e, "name", () => "Error"),
     message: pe(e, "message", () => t),
@@ -2722,7 +2722,7 @@ function Ge(e, t) {
 }
 function Re(e, t) {
   return (s) => ({
-    ...Ge(s, t),
+    ...Ye(s, t),
     source: e
   });
 }
@@ -2734,13 +2734,13 @@ function pe(e, t, s) {
   }
   return s();
 }
-var Wt = [
+var Ht = [
   "clearStaleState",
   "querySessionStatus",
   "revokeTokens",
   "startSilentRenew",
   "stopSilentRenew"
-], Jt = [
+], Wt = [
   "signinPopup",
   "signinSilent",
   "signinRedirect",
@@ -2752,7 +2752,7 @@ var Wt = [
   throw new Error(
     `UserManager#${e} was called from an unsupported context. If this is a server-rendered page, defer this call with useEffect() or pass a custom UserManager implementation.`
   );
-}, Ne = typeof window > "u" ? null : jt, Ft = (e) => {
+}, Ne = typeof window > "u" ? null : Nt, Jt = (e) => {
   const {
     children: t,
     onSigninCallback: s,
@@ -2762,14 +2762,14 @@ var Wt = [
     onRemoveUser: n,
     userManager: d = null,
     ...l
-  } = e, [a] = A.useState(() => d ?? (Ne ? new Ne(l) : { settings: l })), [u, g] = A.useReducer(Mt, qt), h = A.useMemo(
+  } = e, [a] = A.useState(() => d ?? (Ne ? new Ne(l) : { settings: l })), [u, g] = A.useReducer(qt, jt), h = A.useMemo(
     () => Object.assign(
       {
         settings: a.settings,
         events: a.events
       },
       Object.fromEntries(
-        Wt.map((p) => {
+        Ht.map((p) => {
           var S, y;
           return [
             p,
@@ -2778,7 +2778,7 @@ var Wt = [
         })
       ),
       Object.fromEntries(
-        Jt.map((p) => [
+        Wt.map((p) => [
           p,
           a[p] ? async (S) => {
             g({
@@ -2791,7 +2791,7 @@ var Wt = [
               return g({
                 type: "ERROR",
                 error: {
-                  ...Ge(y, `Unknown error while executing ${p}(...).`),
+                  ...Ye(y, `Unknown error while executing ${p}(...).`),
                   source: p,
                   args: S
                 }
@@ -2809,11 +2809,11 @@ var Wt = [
     !a || m.current || (m.current = !0, (async () => {
       try {
         let p = null;
-        Dt() && !r && (p = await a.signinCallback(), s && await s(p)), p = p || await a.getUser(), g({ type: "INITIALISED", user: p });
+        Mt() && !r && (p = await a.signinCallback(), s && await s(p)), p = p || await a.getUser(), g({ type: "INITIALISED", user: p });
       } catch (p) {
         g({
           type: "ERROR",
-          error: $t(p)
+          error: Dt(p)
         });
       }
       try {
@@ -2824,7 +2824,7 @@ var Wt = [
       } catch (p) {
         g({
           type: "ERROR",
-          error: Lt(p)
+          error: $t(p)
         });
       }
     })());
@@ -2845,7 +2845,7 @@ var Wt = [
     const P = (I) => {
       g({
         type: "ERROR",
-        error: Ht(I)
+        error: Lt(I)
       });
     };
     return a.events.addSilentRenewError(P), () => {
@@ -2860,11 +2860,11 @@ var Wt = [
     removeUser: C
   }), [u, h, C]);
   return /* @__PURE__ */ A.createElement(Ee.Provider, { value: T }, t);
-}, Kt = () => {
+}, Ft = () => {
   const e = A.useContext(Ee);
   return e || console.warn("AuthProvider context is undefined, please verify you are calling useAuth() as child of a <AuthProvider> component."), e;
 };
-const je = {
+const Kt = {
   // authority,
   // client_id: clientId,
   redirect_uri: window.location.origin,
@@ -2885,8 +2885,11 @@ function Vt(e, t) {
     s
   )}`;
 }
-const zt = ({ children: e, Login: t }) => {
-  const s = Kt(), r = s.user?.profile;
+const zt = ({
+  children: e,
+  Login: t
+}) => {
+  const s = Ft(), r = s.user?.profile;
   return s.isLoading ? /* @__PURE__ */ H.jsx("div", { children: "Loading..." }) : s.error ? /* @__PURE__ */ H.jsxs("div", { children: [
     "Encountering error... ",
     s.error.message
@@ -2894,7 +2897,11 @@ const zt = ({ children: e, Login: t }) => {
     /* @__PURE__ */ H.jsx("p", { children: "No project permission" }),
     /* @__PURE__ */ H.jsx("button", { onClick: () => s.removeUser(), children: "Sign out" })
   ] }) : /* @__PURE__ */ H.jsx(t, {});
-}, Yt = ({ children: e, Login: t, ...s }) => (console.log({ ...je, ...s }), /* @__PURE__ */ H.jsx(Ft, { ...je, ...s, children: /* @__PURE__ */ H.jsx(zt, { Login: t, children: e }) }));
+}, Yt = ({
+  children: e,
+  Login: t,
+  ...s
+}) => /* @__PURE__ */ H.jsx(Jt, { ...Kt, ...s, children: /* @__PURE__ */ H.jsx(zt, { Login: t, children: e }) });
 export {
   Yt as AiResearchIdpProvider,
   Vt as signOutRedirect
