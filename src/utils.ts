@@ -16,14 +16,9 @@ if (import.meta.env.PROD) {
   }
 }
 
-// 環境変数がセットされていない場合は検証環境用の設定を使用する
-const authority: string = import.meta.env.VITE_COGNITO_AUTHORITY ?? "https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_Rjm3JZLVe";
-const clientId: string = import.meta.env.VITE_COGNITO_CLIENT_ID ?? "1kqvas11ce10tiefm1qvlp03tq";
-const cognitoDomain: string = import.meta.env.VITE_COGNITO_DOMAIN ?? "https://ai-research-idp-934488269256.auth.ap-northeast-1.amazoncognito.com";
-
 export const authConfig: AuthProviderProps = {
-  authority,
-  client_id: clientId,
+  // authority,
+  // client_id: clientId,
   redirect_uri: window.location.origin,
   response_type: "code",
   scope: [
@@ -37,7 +32,7 @@ export const authConfig: AuthProviderProps = {
   onSigninCallback: () => window.history.replaceState({}, document.title, window.location.pathname),
 };
 
-export function signOutRedirect() {
+export function signOutRedirect(cognitoDomain: string, clientId: string) {
   const logoutUri = window.location.origin;
   window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(
     logoutUri

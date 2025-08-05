@@ -31,9 +31,13 @@ const CheckLogin: FC<PropsWithChildren>  = ({ children }) => {
   );
 }
 
-export const AiResearchIdpProvider: FC<PropsWithChildren> = ({ children }) => {
+interface Props{
+  authority: string;
+  clientId: string;
+}
+export const AiResearchIdpProvider: FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
   return (
-    <AuthProvider {...authConfig}>
+    <AuthProvider {...{authConfig, ...props}}>
       <CheckLogin>
       {children}
       </CheckLogin>
