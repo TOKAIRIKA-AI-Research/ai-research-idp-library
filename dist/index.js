@@ -150,13 +150,13 @@ function Qe() {
         "Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release."
       )), c = this.props.ref, c !== void 0 ? c : null;
     }
-    function a(c, _, w, b, L, N, de, ue) {
+    function a(c, _, w, b, H, N, de, ue) {
       return w = N.ref, c = {
         $$typeof: m,
         type: c,
         key: _,
         props: N,
-        _owner: L
+        _owner: H
       }, (w !== void 0 ? w : null) !== null ? Object.defineProperty(c, "ref", {
         enumerable: !1,
         get: l
@@ -182,7 +182,7 @@ function Qe() {
         value: ue
       }), Object.freeze && (Object.freeze(c.props), Object.freeze(c)), c;
     }
-    function u(c, _, w, b, L, N, de, ue) {
+    function u(c, _, w, b, H, N, de, ue) {
       var k = _.children;
       if (k !== void 0)
         if (b)
@@ -225,7 +225,7 @@ React keys must be passed directly to JSX without using spread:
         c,
         k,
         N,
-        L,
+        H,
         i(),
         w,
         de,
@@ -247,7 +247,7 @@ React keys must be passed directly to JSX without using spread:
       h,
       o
     )(), Y = V(r(o)), re = {};
-    X.Fragment = T, X.jsx = function(c, _, w, b, L) {
+    X.Fragment = T, X.jsx = function(c, _, w, b, H) {
       var N = 1e4 > K.recentlyCreatedOwnerStacks++;
       return u(
         c,
@@ -255,11 +255,11 @@ React keys must be passed directly to JSX without using spread:
         w,
         !1,
         b,
-        L,
+        H,
         N ? Error("react-stack-top-frame") : se,
         N ? V(r(c)) : Y
       );
-    }, X.jsxs = function(c, _, w, b, L) {
+    }, X.jsxs = function(c, _, w, b, H) {
       var N = 1e4 > K.recentlyCreatedOwnerStacks++;
       return u(
         c,
@@ -267,7 +267,7 @@ React keys must be passed directly to JSX without using spread:
         w,
         !0,
         b,
-        L,
+        H,
         N ? Error("react-stack-top-frame") : se,
         N ? V(r(c)) : Y
       );
@@ -278,7 +278,7 @@ var Ie;
 function Ze() {
   return Ie || (Ie = 1, process.env.NODE_ENV === "production" ? ie.exports = Xe() : ie.exports = Qe()), ie.exports;
 }
-var H = Ze();
+var M = Ze();
 class Q extends Error {
 }
 Q.prototype.name = "InvalidTokenError";
@@ -336,20 +336,20 @@ var rt = {
   },
   error: () => {
   }
-}, M, D, oe = /* @__PURE__ */ ((e) => (e[e.NONE = 0] = "NONE", e[e.ERROR = 1] = "ERROR", e[e.WARN = 2] = "WARN", e[e.INFO = 3] = "INFO", e[e.DEBUG = 4] = "DEBUG", e))(oe || {});
+}, D, $, oe = /* @__PURE__ */ ((e) => (e[e.NONE = 0] = "NONE", e[e.ERROR = 1] = "ERROR", e[e.WARN = 2] = "WARN", e[e.INFO = 3] = "INFO", e[e.DEBUG = 4] = "DEBUG", e))(oe || {});
 ((e) => {
   function t() {
-    M = 3, D = rt;
+    D = 3, $ = rt;
   }
   e.reset = t;
   function s(i) {
     if (!(0 <= i && i <= 4))
       throw new Error("Invalid log level");
-    M = i;
+    D = i;
   }
   e.setLevel = s;
   function r(i) {
-    D = i;
+    $ = i;
   }
   e.setLogger = r;
 })(oe || (oe = {}));
@@ -359,16 +359,16 @@ var f = class j {
   }
   /* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
   debug(...t) {
-    M >= 4 && D.debug(j._format(this._name, this._method), ...t);
+    D >= 4 && $.debug(j._format(this._name, this._method), ...t);
   }
   info(...t) {
-    M >= 3 && D.info(j._format(this._name, this._method), ...t);
+    D >= 3 && $.info(j._format(this._name, this._method), ...t);
   }
   warn(...t) {
-    M >= 2 && D.warn(j._format(this._name, this._method), ...t);
+    D >= 2 && $.warn(j._format(this._name, this._method), ...t);
   }
   error(...t) {
-    M >= 1 && D.error(j._format(this._name, this._method), ...t);
+    D >= 1 && $.error(j._format(this._name, this._method), ...t);
   }
   /* eslint-enable @typescript-eslint/no-unsafe-enum-comparison */
   throw(t) {
@@ -389,16 +389,16 @@ var f = class j {
   /* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
   // helpers for static class methods
   static debug(t, ...s) {
-    M >= 4 && D.debug(j._format(t), ...s);
+    D >= 4 && $.debug(j._format(t), ...s);
   }
   static info(t, ...s) {
-    M >= 3 && D.info(j._format(t), ...s);
+    D >= 3 && $.info(j._format(t), ...s);
   }
   static warn(t, ...s) {
-    M >= 2 && D.warn(j._format(t), ...s);
+    D >= 2 && $.warn(j._format(t), ...s);
   }
   static error(t, ...s) {
-    M >= 1 && D.error(j._format(t), ...s);
+    D >= 1 && $.error(j._format(t), ...s);
   }
   /* eslint-enable @typescript-eslint/no-unsafe-enum-comparison */
 };
@@ -593,7 +593,7 @@ var R = je, W = class {
   static serialize(e) {
     return Object.entries(e).filter(([, t]) => t != null).map(([t, s]) => `${t}=${typeof s != "boolean" ? s : s ? "yes" : "no"}`).join(",");
   }
-}, $ = class ne extends W {
+}, L = class ne extends W {
   constructor() {
     super(...arguments), this._logger = new f(`Timer('${this._name}')`), this._timerHandle = null, this._expiration = 0, this._callback = () => {
       const t = this._expiration - ne.getEpochTime();
@@ -641,7 +641,7 @@ var R = je, W = class {
   }
 }, nt = class {
   constructor(e) {
-    this._logger = new f("AccessTokenEvents"), this._expiringTimer = new $("Access token expiring"), this._expiredTimer = new $("Access token expired"), this._expiringNotificationTimeInSeconds = e.expiringNotificationTimeInSeconds;
+    this._logger = new f("AccessTokenEvents"), this._expiringTimer = new L("Access token expiring"), this._expiredTimer = new L("Access token expired"), this._expiringNotificationTimeInSeconds = e.expiringNotificationTimeInSeconds;
   }
   async load(e) {
     const t = this._logger.create("load");
@@ -1224,7 +1224,7 @@ var R = je, W = class {
   }
 }, ce = class Se {
   constructor(t) {
-    this.id = t.id || R.generateUUIDv4(), this.data = t.data, t.created && t.created > 0 ? this.created = t.created : this.created = $.getEpochTime(), this.request_type = t.request_type, this.url_state = t.url_state;
+    this.id = t.id || R.generateUUIDv4(), this.data = t.data, t.created && t.created > 0 ? this.created = t.created : this.created = L.getEpochTime(), this.request_type = t.request_type, this.url_state = t.url_state;
   }
   toStorageString() {
     return new f("State").create("toStorageString"), JSON.stringify({
@@ -1239,7 +1239,7 @@ var R = je, W = class {
     return f.createStatic("State", "fromStorageString"), Promise.resolve(new Se(JSON.parse(t)));
   }
   static async clearStaleState(t, s) {
-    const r = f.createStatic("State", "clearStaleState"), i = $.getEpochTime() - s, o = await t.getAllKeys();
+    const r = f.createStatic("State", "clearStaleState"), i = L.getEpochTime() - s, o = await t.getAllKeys();
     r.debug("got keys", o);
     for (let n = 0; n < o.length; n++) {
       const d = o[n], l = await t.get(d);
@@ -1367,10 +1367,10 @@ var _t = Le, pt = "openid", he = class {
   }
   get expires_in() {
     if (this.expires_at !== void 0)
-      return this.expires_at - $.getEpochTime();
+      return this.expires_at - L.getEpochTime();
   }
   set expires_in(e) {
-    typeof e == "string" && (e = Number(e)), e !== void 0 && e >= 0 && (this.expires_at = Math.floor(e) + $.getEpochTime());
+    typeof e == "string" && (e = Number(e)), e !== void 0 && e >= 0 && (this.expires_at = Math.floor(e) + L.getEpochTime());
   }
   get isOpenId() {
     var e;
@@ -1753,10 +1753,10 @@ var _t = Le, pt = "openid", he = class {
   /** Computed number of seconds the access token has remaining. */
   get expires_in() {
     if (this.expires_at !== void 0)
-      return this.expires_at - $.getEpochTime();
+      return this.expires_at - L.getEpochTime();
   }
   set expires_in(t) {
-    t !== void 0 && (this.expires_at = Math.floor(t) + $.getEpochTime());
+    t !== void 0 && (this.expires_at = Math.floor(t) + L.getEpochTime());
   }
   /** Computed value indicating if the access token is expired. */
   get expired() {
@@ -2104,7 +2104,7 @@ var _t = Le, pt = "openid", he = class {
   }
 }, At = class {
   constructor(e) {
-    this._userManager = e, this._logger = new f("SilentRenewService"), this._isStarted = !1, this._retryTimer = new $("Retry Silent Renew"), this._tokenExpiring = async () => {
+    this._userManager = e, this._logger = new f("SilentRenewService"), this._isStarted = !1, this._retryTimer = new L("Retry Silent Renew"), this._tokenExpiring = async () => {
       const t = this._logger.create("_tokenExpiring");
       try {
         await this._userManager.signinSilent(), t.debug("silent token renewal successful");
@@ -2885,23 +2885,24 @@ function Vt(e, t) {
     s
   )}`;
 }
-const zt = ({
-  children: e,
-  Login: t
-}) => {
-  const s = Ft(), r = s.user?.profile;
-  return s.isLoading ? /* @__PURE__ */ H.jsx("div", { children: "Loading..." }) : s.error ? /* @__PURE__ */ H.jsxs("div", { children: [
+const zt = ({ children: e }) => {
+  const t = Ft(), s = t.user?.profile, r = () => {
+    t.removeUser();
+  };
+  return t.isLoading ? /* @__PURE__ */ M.jsx("div", { children: "Loading..." }) : t.error ? /* @__PURE__ */ M.jsxs("div", { children: [
     "Encountering error... ",
-    s.error.message
-  ] }) : s.isAuthenticated ? r?.["cognito:groups"]?.includes("Sample-Client") ? e : /* @__PURE__ */ H.jsxs("div", { children: [
-    /* @__PURE__ */ H.jsx("p", { children: "No project permission" }),
-    /* @__PURE__ */ H.jsx("button", { onClick: () => s.removeUser(), children: "Sign out" })
-  ] }) : /* @__PURE__ */ H.jsx(t, {});
+    t.error.message
+  ] }) : t.isAuthenticated ? s?.["cognito:groups"]?.includes("Sample-Client") ? e : /* @__PURE__ */ M.jsxs("div", { children: [
+    /* @__PURE__ */ M.jsx("p", { children: "No project permission" }),
+    /* @__PURE__ */ M.jsx("button", { onClick: () => t.removeUser(), children: "Sign out" })
+  ] }) : /* @__PURE__ */ M.jsxs("div", { children: [
+    /* @__PURE__ */ M.jsx("button", { onClick: () => t.signinRedirect(), children: "Sign in" }),
+    /* @__PURE__ */ M.jsx("button", { onClick: r, children: "Sign out" })
+  ] });
 }, Yt = ({
   children: e,
-  Login: t,
-  ...s
-}) => /* @__PURE__ */ H.jsx(Jt, { ...Kt, ...s, children: /* @__PURE__ */ H.jsx(zt, { Login: t, children: e }) });
+  ...t
+}) => /* @__PURE__ */ M.jsx(Jt, { ...Kt, ...t, children: /* @__PURE__ */ M.jsx(zt, { children: e }) });
 export {
   Yt as AiResearchIdpProvider,
   Vt as signOutRedirect
