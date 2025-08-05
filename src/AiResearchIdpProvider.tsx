@@ -1,6 +1,6 @@
 import type { FC, PropsWithChildren } from "react";
-import { useAuth, AuthProvider } from "react-oidc-context";
 import { authConfig, type Profile } from "./utils";
+import { AuthProvider, useAuth } from "react-oidc-context";
 
 const CheckLogin: FC<PropsWithChildren> = ({ children }) => {
   const auth = useAuth();
