@@ -1,0 +1,45 @@
+import type { CognitoIdTokenPayload } from "aws-jwt-verify/jwt-model";
+import type { IdTokenClaims } from "oidc-client-ts";
+import type { AuthProviderProps } from "react-oidc-context";
+
+export type Profile = IdTokenClaims & CognitoIdTokenPayload
+
+if (import.meta.env.PROD) {
+  if (!import.meta.env.VITE_COGNITO_AUTHORITY) {
+    throw new Error("VITE_COGNITO_AUTHORITY environment variable is not set");
+  }
+  if (!import.meta.env.VITE_COGNITO_CLIENT_ID) {
+    throw new Error("VITE_COGNITO_CLIENT_ID environment variable is not set");
+  }
+  if (!import.meta.env.VITE_COGNITO_DOMAIN) {
+    throw new Error("VITE_COGNITO_DOMAIN environment variable is not set");
+  }
+}
+
+// 環境変数がセットされていない場合は検証環境用の設定を使用する
+const authority: string = import.meta.env.VITE_COGNITO_AUTHORITY ?? "https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_Rjm3JZLVe";
+const clientId: string = import.meta.env.VITE_COGNITO_CLIENT_ID ?? "1kqvas11ce10tiefm1qvlp03tq";
+const cognitoDomain: string = import.meta.env.VITE_COGNITO_DOMAIN ?? "https://ai-research-idp-934488269256.auth.ap-northeast-1.amazoncognito.com";
+
+export const authConfig: AuthProviderProps = {
+  authority,
+  client_id: clientId,
+  redirect_uri: window.location.origin,
+  response_type: "code",
+  scope: [
+    // "phone",
+    // "email",
+    "openid",
+    // "aws.cognito.signin.user.admin",
+    "profile",
+  ].join(" "),
+  extraQueryParams: { lang: "ja" },
+  onSigninCallback: () => window.history.replaceState({}, document.title, window.location.pathname),
+};
+
+export function signOutRedirect() {
+  const logoutUri = window.location.origin;
+  window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(
+    logoutUri
+  )}`;
+};

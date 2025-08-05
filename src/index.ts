@@ -1,1 +1,1 @@
-export * from "./MyButton"; // MyButton.tsx ファイル
+export * from "./AiResearchIdpProvider";
