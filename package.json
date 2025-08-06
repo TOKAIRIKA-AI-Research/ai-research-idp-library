@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "aws-jwt-verify": "^5.1.0",
     "react-oidc-context": "^3.3.0"
   },
   "devDependencies": {
