@@ -1,5 +1,4 @@
-import { type AuthContextProps } from "react-oidc-context";
 export { AiResearchIdpProvider } from "./AiResearchIdpProvider";
 export { signOutRedirect, type Profile } from "./utils";
-export declare const useAuth: () => AuthContextProps;
+export { useAuth } from "react-oidc-context";
 //# sourceMappingURL=index.d.ts.map
